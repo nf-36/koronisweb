@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -7,15 +6,13 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#1A1F2C",
+        background: "#0A0A0A",
         foreground: "#ffffff",
         primary: "#ffffff",
-        secondary: "#2d303c",
-        muted: "#8E9196",
+        secondary: "#1A1A1A",
+        muted: "#666666",
         accent: "#ffffff",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
+        border: "rgba(255,255,255,0.1)",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
