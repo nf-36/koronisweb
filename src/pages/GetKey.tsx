@@ -7,30 +7,30 @@ const GetKey = () => {
 
   const keyOptions = [
     {
-      id: 'free',
-      title: 'Free Key',
-      description: 'Complete a short task to get 24-hour access',
-      icon: <Gift className="w-6 h-6" />,
-      duration: '24 hours',
-      buttonText: 'Get Free Key',
-      popular: false
-    },
-    {
-      id: 'premium',
-      title: 'Premium Key',
-      description: 'Instant access with premium benefits',
-      icon: <Lock className="w-6 h-6" />,
-      duration: 'Lifetime',
-      buttonText: 'Purchase Premium',
+      id: 'linkvertise',
+      title: 'Linkvertise',
+      description: 'Get your key through Linkvertise',
+      icon: <ExternalLink className="w-6 h-6" />,
+      buttonText: 'Get Key (Linkvertise)',
+      url: '#',
       popular: true
     },
     {
-      id: 'trial',
-      title: 'Trial Key',
-      description: 'Limited features for testing',
-      icon: <Clock className="w-6 h-6" />,
-      duration: '3 days',
-      buttonText: 'Get Trial Key',
+      id: 'lootlabs',
+      title: 'LootLabs',
+      description: 'Complete LootLabs tasks for access',
+      icon: <Gift className="w-6 h-6" />,
+      buttonText: 'Get Key (LootLabs)',
+      url: '#',
+      popular: false
+    },
+    {
+      id: 'workink',
+      title: 'Work.ink',
+      description: 'Quick access through Work.ink',
+      icon: <Link className="w-6 h-6" />,
+      buttonText: 'Get Key (Work.ink)',
+      url: '#',
       popular: false
     }
   ];

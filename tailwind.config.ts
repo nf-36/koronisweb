@@ -9,10 +9,10 @@ export default {
       colors: {
         background: "#1A1F2C",
         foreground: "#ffffff",
-        primary: "#9b87f5",
-        secondary: "#221F26",
+        primary: "#ffffff",
+        secondary: "#2d303c",
         muted: "#8E9196",
-        accent: "#7E69AB",
+        accent: "#ffffff",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
