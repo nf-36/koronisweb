@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Lock, Gift, Clock, ArrowRight, ExternalLink } from 'lucide-react';
 
 const GetKey = () => {
@@ -13,7 +14,8 @@ const GetKey = () => {
       icon: <ExternalLink className="w-6 h-6" />,
       buttonText: 'Get Key (Linkvertise)',
       url: '#',
-      popular: true
+      popular: true,
+      estimatedTime: '1-2 minutes'
     },
     {
       id: 'lootlabs',
@@ -22,7 +24,8 @@ const GetKey = () => {
       icon: <Gift className="w-6 h-6" />,
       buttonText: 'Get Key (LootLabs)',
       url: '#',
-      popular: false
+      popular: false,
+      estimatedTime: '2-3 minutes'
     },
     {
       id: 'workink',
@@ -31,7 +34,8 @@ const GetKey = () => {
       icon: <Link className="w-6 h-6" />,
       buttonText: 'Get Key (Work.ink)',
       url: '#',
-      popular: false
+      popular: false,
+      estimatedTime: '1 minute'
     }
   ];
 
@@ -71,7 +75,7 @@ const GetKey = () => {
               <h2 className="text-xl font-bold mb-2">{option.title}</h2>
               <p className="text-gray-400 mb-4">{option.description}</p>
               <div className="bg-background/30 px-4 py-1 rounded-full text-sm mb-6">
-                Duration: {option.duration}
+                Duration: {option.estimatedTime}
               </div>
               
               <button 

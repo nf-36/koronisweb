@@ -61,7 +61,7 @@ const Index = () => {
               {[...Array(50)].map((_, i) => (
                 <div
                   key={`star-${i}`}
-                  className="absolute rounded-full bg-white"
+                  className="absolute rounded-full bg-white animate-pulse-slow"
                   style={{
                     width: `${Math.random() * 2 + 1}px`,
                     height: `${Math.random() * 2 + 1}px`,
@@ -71,7 +71,6 @@ const Index = () => {
                     animationDuration: `${Math.random() * 3 + 2}s`,
                     animationDelay: `${Math.random() * 2}s`,
                   }}
-                  className="animate-pulse-slow"
                 />
               ))}
             </div>
