@@ -53,13 +53,13 @@ const GetKey = () => {
             onClick={() => setSelectedOption(option.id)}
             className={`relative overflow-hidden rounded-xl p-6 transition-all duration-300 cursor-pointer ${
               selectedOption === option.id 
-                ? 'border-2 border-primary bg-secondary/70 scale-105' 
+                ? 'border-2 border-primary bg-secondary/70 scale-[1.02]' 
                 : 'border border-primary/20 bg-secondary/40 hover:bg-secondary/60'
             }`}
           >
             {option.popular && (
-              <div className="absolute top-0 right-0">
-                <div className="bg-primary text-background text-xs font-bold px-3 py-1 transform rotate-0 translate-x-[30%] translate-y-[30%]">
+              <div className="absolute top-4 right-4">
+                <div className="bg-primary/90 text-background text-xs font-bold px-3 py-1 rounded-full">
                   POPULAR
                 </div>
               </div>
@@ -67,21 +67,21 @@ const GetKey = () => {
             
             <div className="flex flex-col items-center text-center">
               <div className={`rounded-full p-3 mb-4 ${
-                selectedOption === option.id ? 'bg-primary text-white' : 'bg-secondary text-primary'
+                selectedOption === option.id ? 'bg-primary text-background' : 'bg-secondary text-primary'
               }`}>
                 {option.icon}
               </div>
               
-              <h2 className="text-xl font-bold mb-2">{option.title}</h2>
+              <h2 className="text-xl font-bold mb-2 text-white">{option.title}</h2>
               <p className="text-gray-400 mb-4">{option.description}</p>
-              <div className="bg-background/30 px-4 py-1 rounded-full text-sm mb-6">
+              <div className="bg-background/30 px-4 py-1 rounded-full text-sm mb-6 text-white/70">
                 Duration: {option.estimatedTime}
               </div>
               
               <button 
                 className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-sm font-bold transition-all ${
                   selectedOption === option.id
-                    ? 'bg-primary text-white'
+                    ? 'bg-primary text-background hover:bg-primary/90'
                     : 'bg-secondary/80 text-white hover:bg-secondary'
                 }`}
               >
@@ -94,7 +94,7 @@ const GetKey = () => {
       </div>
 
       <div className="mt-16 text-center">
-        <h3 className="text-2xl font-bold mb-6">Need Help?</h3>
+        <h3 className="text-2xl font-bold mb-6 text-white">Need Help?</h3>
         <div className="p-6 rounded-xl bg-secondary/40 border border-primary/20 max-w-2xl mx-auto">
           <p className="text-gray-300 mb-4">
             Have questions about our key system? Visit our tutorials or join our Discord server for assistance.
@@ -102,14 +102,14 @@ const GetKey = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
               href="#" 
-              className="inline-flex items-center px-6 py-3 rounded-lg border border-primary/30 hover:bg-secondary/80 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg border border-primary/20 bg-secondary/60 text-white hover:bg-secondary/80 transition-colors"
             >
               <span className="mr-2">Video Tutorials</span>
               <ExternalLink className="w-4 h-4" />
             </a>
             <a 
               href="#" 
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center px-6 py-3 rounded-lg bg-secondary/60 text-white border border-primary/20 hover:bg-secondary/80 transition-colors"
             >
               <span className="mr-2">Join Discord</span>
               <ExternalLink className="w-4 h-4" />

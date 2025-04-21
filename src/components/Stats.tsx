@@ -1,4 +1,3 @@
-
 import { useEffect, useState, useRef } from 'react';
 import { Users, PlayCircle, Star } from 'lucide-react';
 
@@ -10,9 +9,9 @@ const Stats = () => {
   });
 
   const targetCounts = {
-    users: 15000,
-    executions: 100000,
-    rating: 4.9
+    users: 5000,
+    executions: 25000,
+    rating: 4.8
   };
 
   const statsRef = useRef<HTMLDivElement>(null);

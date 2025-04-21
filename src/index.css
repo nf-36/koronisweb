@@ -95,6 +95,20 @@
   100% { background-position: 0% 50%; }
 }
 
+@keyframes floatingLine {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }

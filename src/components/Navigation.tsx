@@ -6,7 +6,7 @@ const Navigation = () => {
     { name: 'Home', path: '/' },
     { name: 'Script', path: '/script' },
     { name: 'Get Key', path: '/get-key' },
-    { name: 'About', path: '/about' },
+    { name: 'About Us', path: '/about' },  // Updated text
   ];
 
   return (
