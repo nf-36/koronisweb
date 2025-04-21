@@ -13,6 +13,9 @@ export default {
         secondary: "#221F26",
         muted: "#8E9196",
         accent: "#7E69AB",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
