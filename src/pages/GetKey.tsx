@@ -1,6 +1,7 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Lock, Gift, Clock, ArrowRight, ExternalLink } from 'lucide-react';
+import { Lock, Gift, Clock, ArrowRight, ExternalLink, Link as LinkIcon } from 'lucide-react';
 
 const GetKey = () => {
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
@@ -30,7 +31,7 @@ const GetKey = () => {
       id: 'workink',
       title: 'Work.ink',
       description: 'Quick access through Work.ink',
-      icon: <Link className="w-6 h-6" />,
+      icon: <LinkIcon className="w-6 h-6" />,
       buttonText: 'Get Key (Work.ink)',
       url: '#',
       popular: false,
