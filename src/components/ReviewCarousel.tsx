@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
 const reviews = [
   {
@@ -20,48 +20,103 @@ const reviews = [
     text: "Great support team and very reliable script.",
     author: "RobloxPro",
     rating: 4
+  },
+  {
+    id: 4,
+    text: "The key system is simple and the scripts are top-notch!",
+    author: "ScripterX",
+    rating: 5
+  },
+  {
+    id: 5,
+    text: "Never experienced any crashes, highly recommended!",
+    author: "GamingWizard",
+    rating: 5
   }
 ];
 
 const ReviewCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % reviews.length);
+      nextSlide();
     }, 5000);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentIndex]);
 
   const nextSlide = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
     setCurrentIndex((prev) => (prev + 1) % reviews.length);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
   };
 
   const prevSlide = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
     setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+    
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 500);
   };
 
   return (
-    <div className="relative w-full max-w-4xl mx-auto px-4 py-8">
-      <div className="overflow-hidden rounded-lg bg-secondary/50 backdrop-blur-sm p-6 border border-primary/20">
+    <div className="relative w-full max-w-5xl mx-auto">
+      <div className="absolute -top-10 -left-10 opacity-10 text-primary">
+        <Quote size={120} />
+      </div>
+      
+      <div className="overflow-hidden rounded-xl bg-secondary/40 backdrop-blur-lg p-8 md:p-12 border border-primary/20 relative">
         <div className="flex items-center justify-between">
           <button
             onClick={prevSlide}
-            className="p-2 rounded-full hover:bg-primary/20 transition-colors"
+            className="p-3 rounded-full bg-background/40 hover:bg-primary/20 transition-colors"
+            aria-label="Previous review"
           >
-            <ChevronLeft className="text-gray-400" />
+            <ChevronLeft className="text-gray-300" />
           </button>
           
-          <div className="text-center mx-8">
-            <p className="text-lg text-gray-200 mb-4">&quot;{reviews[currentIndex].text}&quot;</p>
-            <p className="text-primary font-medium">- {reviews[currentIndex].author}</p>
+          <div className="text-center mx-8 transition-all duration-300 transform">
+            <div className="flex justify-center mb-6">
+              {[...Array(reviews[currentIndex].rating)].map((_, i) => (
+                <Star key={i} className="w-6 h-6 text-primary fill-primary" />
+              ))}
+              {[...Array(5 - reviews[currentIndex].rating)].map((_, i) => (
+                <Star key={i + reviews[currentIndex].rating} className="w-6 h-6 text-gray-600" />
+              ))}
+            </div>
+            
+            <p className="text-xl md:text-2xl text-gray-100 mb-6 italic">&quot;{reviews[currentIndex].text}&quot;</p>
+            <p className="text-primary font-bold text-lg">- {reviews[currentIndex].author}</p>
+            
+            <div className="flex justify-center mt-6 gap-2">
+              {reviews.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentIndex === index ? 'bg-primary w-6' : 'bg-gray-600'
+                  }`}
+                  onClick={() => setCurrentIndex(index)}
+                  aria-label={`Go to review ${index + 1}`}
+                />
+              ))}
+            </div>
           </div>
           
           <button
             onClick={nextSlide}
-            className="p-2 rounded-full hover:bg-primary/20 transition-colors"
+            className="p-3 rounded-full bg-background/40 hover:bg-primary/20 transition-colors"
+            aria-label="Next review"
           >
-            <ChevronRight className="text-gray-400" />
+            <ChevronRight className="text-gray-300" />
           </button>
         </div>
       </div>

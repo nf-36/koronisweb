@@ -93,3 +93,56 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.9; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-rotate {
+  animation: rotate 12s linear infinite;
+}
+
+.animate-gradient {
+  animation: gradient-shift 15s ease infinite;
+  background-size: 200% 200%;
+}
+
+.grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(52, 58, 78, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(52, 58, 78, 0.1) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.text-glow {
+  text-shadow: 0 0 15px rgba(155, 135, 245, 0.6);
+}
+
+.bg-blur {
+  backdrop-filter: blur(10px);
+}
