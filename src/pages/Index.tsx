@@ -1,7 +1,8 @@
+
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
-import { Star, ArrowRight, Discord } from 'lucide-react';
+import { Star, ArrowRight, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -74,7 +75,7 @@ const Index = () => {
       <div className="bg-[#1A1F2C] py-12 border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between">
           <div className="flex items-center gap-4 mb-6 sm:mb-0">
-            <Discord className="w-8 h-8 text-white" />
+            <MessageSquare className="w-8 h-8 text-white" />
             <h3 className="text-2xl font-semibold text-white">Join our Discord Community</h3>
           </div>
           <a
