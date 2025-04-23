@@ -1,5 +1,5 @@
 
-import { Users, Shield, Code, Heart, ExternalLink } from 'lucide-react';
+import { Users, Shield, Code, Heart } from 'lucide-react';
 
 const About = () => {
   const features = [
@@ -26,7 +26,31 @@ const About = () => {
   ];
 
   return (
-    <div className="pt-24 px-4 pb-24 max-w-6xl mx-auto">
+    <div className="relative pt-24 px-4 pb-24 max-w-6xl mx-auto">
+      {/* Animated Background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460] animate-gradient"></div>
+        
+        {/* Animated floating particles */}
+        <div className="absolute inset-0">
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={i}
+              className="absolute rounded-full bg-white/10"
+              style={{
+                width: `${Math.random() * 6 + 2}px`,
+                height: `${Math.random() * 6 + 2}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.3,
+                animation: `floatingParticle ${Math.random() * 15 + 10}s linear infinite`,
+                animationDelay: `${Math.random() * 5}s`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+      
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-white/70">About Us</h1>
         <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -34,7 +58,7 @@ const About = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {features.map((feature, index) => (
           <div 
             key={index}
@@ -49,27 +73,6 @@ const About = () => {
             <p className="text-gray-400">{feature.description}</p>
           </div>
         ))}
-      </div>
-
-      <div className="rounded-xl overflow-hidden bg-gradient-to-br from-background to-secondary/40 backdrop-blur-lg border border-primary/20">
-        <div className="p-10">
-          <h2 className="text-3xl font-bold mb-6 text-center">Our Mission</h2>
-          <p className="text-gray-300 text-lg text-center max-w-3xl mx-auto leading-relaxed mb-8">
-            We're committed to developing and maintaining the most reliable, feature-rich, and user-friendly Roblox script hub. 
-            Our goal is to enhance your gaming experience while providing excellent support and regular updates to adapt to 
-            Roblox's evolving environment.
-          </p>
-          
-          <div className="text-center">
-            <a 
-              href="#" 
-              className="inline-flex items-center px-6 py-3 rounded-lg bg-primary text-white hover:bg-primary/90 transition-colors"
-            >
-              <span className="mr-2">Join Our Community</span>
-              <ExternalLink className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
       </div>
     </div>
   );
