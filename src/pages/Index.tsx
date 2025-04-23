@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
-import { Star, ArrowRight } from 'lucide-react';
+import { Star, ArrowRight, Discord } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Index = () => {
@@ -71,48 +70,23 @@ const Index = () => {
         <ReviewCarousel />
       </div>
 
-      {/* Footer */}
-      <footer className="border-t border-white/10 bg-secondary/40 backdrop-blur-lg">
-        <div className="max-w-7xl mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white">Quick Links</h3>
-              <div className="flex flex-col space-y-2">
-                <Link to="/" className="text-white/70 hover:text-white transition-colors">Home</Link>
-                <Link to="/script" className="text-white/70 hover:text-white transition-colors">Script</Link>
-                <Link to="/get-key" className="text-white/70 hover:text-white transition-colors">Get Key</Link>
-                <Link to="/about" className="text-white/70 hover:text-white transition-colors">About Us</Link>
-              </div>
-            </div>
-            
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white">Community</h3>
-              <div className="flex flex-col space-y-2">
-                <a href="#" className="text-white/70 hover:text-white transition-colors">Discord</a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">Twitter</a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">YouTube</a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white">Support</h3>
-              <div className="flex flex-col space-y-2">
-                <a href="#" className="text-white/70 hover:text-white transition-colors">FAQ</a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">Documentation</a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">Contact</a>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white">Legal</h3>
-              <div className="flex flex-col space-y-2">
-                <a href="#" className="text-white/70 hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" className="text-white/70 hover:text-white transition-colors">Privacy Policy</a>
-              </div>
-            </div>
+      {/* Discord Banner */}
+      <div className="bg-[#1A1F2C] py-12 border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between">
+          <div className="flex items-center gap-4 mb-6 sm:mb-0">
+            <Discord className="w-8 h-8 text-white" />
+            <h3 className="text-2xl font-semibold text-white">Join our Discord Community</h3>
           </div>
+          <a
+            href="https://discord.gg/Koronis"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-6 py-3 text-lg font-medium text-white bg-[#5865F2] hover:bg-[#4752C4] rounded-lg transition-colors duration-300"
+          >
+            Join Discord
+          </a>
         </div>
-      </footer>
+      </div>
     </div>
   );
 };
