@@ -10,12 +10,12 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-[#1A1F2C]/80 backdrop-blur-lg border-b border-white/10 z-50">
+    <nav className="fixed top-0 w-full bg-white/10 backdrop-blur-lg border-b border-white/10 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
             <img 
-              src="/lovable-uploads/801f94d6-bf2e-4f6b-a288-3b868e5c28ae.png" 
+              src="/lovable-uploads/481d6f3d-4eae-4f17-97c1-29a328b4c60f.png" 
               alt="Koronis" 
               className="h-8 w-8"
             />
