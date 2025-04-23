@@ -1,36 +1,23 @@
-
 import { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const reviews = [
   {
     id: 1,
-    text: "Best Roblox script I've ever used! Super stable and efficient.",
-    author: "GameMaster2024",
+    text: "Thank you!! Legit and Amazing :)",
+    author: "User123",
     rating: 5
   },
   {
     id: 2,
-    text: "Amazing features and regular updates. Worth every penny!",
-    author: "ProGamer",
-    rating: 5
-  },
-  {
-    id: 3,
-    text: "Great support team and very reliable script.",
-    author: "RobloxPro",
+    text: "Really friendly Staff and Decent Script",
+    author: "GamerPro",
     rating: 4
   },
   {
-    id: 4,
-    text: "The key system is simple and the scripts are top-notch!",
-    author: "ScripterX",
-    rating: 5
-  },
-  {
-    id: 5,
-    text: "Never experienced any crashes, highly recommended!",
-    author: "GamingWizard",
+    id: 3,
+    text: "Everything works perfectly!",
+    author: "ScriptUser",
     rating: 5
   }
 ];

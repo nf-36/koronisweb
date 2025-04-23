@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
+import SupportedGames from '../components/SupportedGames';
+import { motion } from 'framer-motion';
 
 const Script = () => {
   const [isCopied, setIsCopied] = useState(false);
@@ -20,48 +22,55 @@ const Script = () => {
   };
 
   return (
-    <div className="pt-24 px-4 max-w-4xl mx-auto">
-      <h1 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/70 animate-fade-in">
-        Available Scripts
-      </h1>
-      
-      <div className="grid gap-6 animate-fade-in">
-        <div className="p-6 rounded-lg bg-[#1A1F2C]/80 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-white/20 group">
-          <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-white">Koronis Script Hub</h2>
-            <button
-              onClick={copyToClipboard}
-              className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center gap-2 group-hover:scale-105"
-            >
-              {isCopied ? (
-                <>
-                  <Check className="w-4 h-4" />
-                  <span>Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-4 h-4" />
-                  <span>Copy Code</span>
-                </>
-              )}
-            </button>
-          </div>
-          
-          <div className="bg-black/50 p-4 rounded-md overflow-x-auto whitespace-pre-wrap break-words max-w-full">
-            <code className="text-white font-mono text-sm">{scriptCode}</code>
-          </div>
-          
-          <div className="mt-4 text-gray-400">
-            <p>Supports multiple Roblox games with regular updates and optimized performance.</p>
-          </div>
+    <div className="pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h1 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/70">
+          Universal Script
+        </h1>
+        
+        <div className="grid gap-6">
+          <motion.div 
+            className="p-6 rounded-lg bg-[#1A1F2C]/80 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-white/20 group"
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-2xl font-bold text-white">Script Hub</h2>
+              <button
+                onClick={copyToClipboard}
+                className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
+              >
+                {isCopied ? (
+                  <>
+                    <Check className="w-4 h-4" />
+                    <span>Copied!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4" />
+                    <span>Copy Code</span>
+                  </>
+                )}
+              </button>
+            </div>
+            
+            <div className="bg-black/50 p-4 rounded-md overflow-x-auto max-w-full">
+              <code className="text-white font-mono text-sm whitespace-pre-wrap break-all">{scriptCode}</code>
+            </div>
+          </motion.div>
 
-          <div className="absolute inset-0 -z-10 animate-pulse-slow opacity-50">
-            <div className="absolute inset-0 bg-gradient-to-r from-white/5 via-transparent to-transparent animate-gradient" />
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+          >
+            <SupportedGames />
+          </motion.div>
         </div>
-      </div>
-
-      <div className="animated-line bottom-0 left-0" />
+      </motion.div>
     </div>
   );
 };

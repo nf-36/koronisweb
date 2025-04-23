@@ -9,8 +9,8 @@ const Stats = () => {
   });
 
   const targetCounts = {
-    users: 5000,
-    executions: 25000,
+    users: 1500,
+    executions: 8000,
     rating: 4.8
   };
 
