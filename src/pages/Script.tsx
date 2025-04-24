@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Copy, Check, Star } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import SupportedGames from '../components/SupportedGames';
 import { motion } from 'framer-motion';
@@ -22,9 +22,11 @@ const Script = () => {
   };
 
   return (
-    <div className="relative pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden min-h-screen">
+    <div className="relative pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden">
+      {/* Animated Background with Stars and Lines */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
+          {/* Moving stars (dots) */}
           {[...Array(100)].map((_, i) => (
             <div
               key={`star-${i}`}
@@ -40,6 +42,7 @@ const Script = () => {
             />
           ))}
           
+          {/* Moving lines */}
           {[...Array(6)].map((_, i) => (
             <div
               key={`line-${i}`}
@@ -56,42 +59,28 @@ const Script = () => {
       </div>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
       >
-        <motion.div 
-          className="mb-8"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Star className="w-12 h-12 text-white mx-auto mb-4 filter drop-shadow-lg" />
-        </motion.div>
-        
         <motion.h1 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300"
+          className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/70"
+          animate={{ textShadow: ["0 0 5px rgba(255,255,255,0.2)", "0 0 15px rgba(255,255,255,0.4)", "0 0 5px rgba(255,255,255,0.2)"] }}
+          transition={{ duration: 2, repeat: Infinity }}
         >
           Universal Script
         </motion.h1>
-
-        <motion.div 
-          className="grid gap-6"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
+        
+        <div className="grid gap-6">
           <motion.div 
-            className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group"
+            className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group animate-glow"
             whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255,255,255,0.3)" }}
           >
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-white">Script Hub</h2>
               <motion.button
                 onClick={copyToClipboard}
-                className="px-4 py-2 rounded-md bg-primary/20 hover:bg-primary/30 transition-all duration-300 flex items-center gap-2 text-white"
+                className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -109,22 +98,19 @@ const Script = () => {
               </motion.button>
             </div>
             
-            <motion.div 
-              className="bg-black/50 p-4 rounded-md overflow-x-auto max-w-full border border-white/10"
-              whileHover={{ borderColor: "rgba(255,255,255,0.2)" }}
-            >
+            <div className="bg-black/50 p-4 rounded-md overflow-x-auto max-w-full border border-white/10">
               <code className="text-white font-mono text-sm whitespace-pre-wrap break-all">{scriptCode}</code>
-            </motion.div>
+            </div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.7 }}
+            transition={{ delay: 0.2 }}
           >
             <SupportedGames />
           </motion.div>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );
