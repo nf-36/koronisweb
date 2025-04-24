@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
@@ -62,7 +61,7 @@ const ReviewCarousel = () => {
         <Quote size={120} />
       </div>
       
-      <div className="overflow-hidden rounded-xl bg-secondary/40 backdrop-blur-lg p-8 md:p-12 border border-primary/20 relative">
+      <div className="glass-panel rounded-xl p-8 md:p-12 relative glowing-border">
         <div className="flex items-center justify-between">
           <button
             onClick={prevSlide}

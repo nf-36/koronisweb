@@ -8,11 +8,21 @@ export default {
       colors: {
         background: "#0A0A0A",
         foreground: "#ffffff",
-        primary: "#ffffff",
-        secondary: "#1A1A1A",
-        muted: "#666666",
-        accent: "#ffffff",
-        border: "rgba(255,255,255,0.1)",
+        primary: {
+          DEFAULT: "#2563eb", // Bright blue
+          hover: "#1d4ed8",
+          light: "#60a5fa",
+          dark: "#1e40af"
+        },
+        secondary: {
+          DEFAULT: "#1e293b",
+          hover: "#334155"
+        },
+        accent: {
+          DEFAULT: "#3b82f6",
+          hover: "#2563eb"
+        },
+        border: "rgba(59, 130, 246, 0.2)", // Subtle blue border
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
@@ -15,14 +14,10 @@ const Index = () => {
   useEffect(() => {
     setMounted(true);
 
-    // Discord popup notification logic
     const checkForNotification = () => {
       const currentTime = Date.now();
       
-      // Only show notification if it's been at least 2 minutes since the last one
-      // or if there's no record of a previous notification
       if (!lastNotificationTime || (currentTime - lastNotificationTime > 120000)) {
-        // 20% chance of showing
         if (Math.random() < 0.2) {
           toast({
             title: "Join Our Community!",
@@ -42,7 +37,6 @@ const Index = () => {
       }
     };
 
-    // Check for notification every minute
     const intervalId = setInterval(checkForNotification, 60000);
 
     return () => clearInterval(intervalId);
@@ -50,34 +44,29 @@ const Index = () => {
 
   return (
     <div className="overflow-hidden">
-      {/* Animated Background with Stars and Lines */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
-          {/* Moving stars (dots) */}
+      <div className="fixed inset-0 -z-10 overflow-hidden animated-bg">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#1e3a8a]">
           {[...Array(100)].map((_, i) => (
             <div
               key={`star-${i}`}
-              className="absolute rounded-full bg-white"
+              className="star"
               style={{
-                width: Math.random() * 2 + 1 + 'px',
-                height: Math.random() * 2 + 1 + 'px',
+                width: Math.random() * 3 + 1 + 'px',
+                height: Math.random() * 3 + 1 + 'px',
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.1,
-                animation: `twinkle ${Math.random() * 5 + 3}s ease-in-out infinite`
+                animation: `twinkle ${Math.random() * 5 + 3}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 5}s`
               }}
             />
           ))}
           
-          {/* Moving lines */}
           {[...Array(8)].map((_, i) => (
             <div
               key={`line-${i}`}
-              className="absolute h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              className="animated-line"
               style={{
-                width: '100%',
                 top: `${(i + 1) * 12}%`,
-                animation: `floatingLine ${8 + i * 2}s linear infinite`,
                 animationDelay: `${i * 1}s`
               }}
             />
@@ -85,7 +74,6 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Hero Section */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -137,10 +125,8 @@ const Index = () => {
         </div>
       </motion.div>
 
-      {/* Stats Section */}
       <Stats />
 
-      {/* Reviews Section */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -154,8 +140,7 @@ const Index = () => {
         <ReviewCarousel />
       </motion.div>
 
-      {/* Discord Banner - Enhanced Design */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#1A1F2C] to-[#2A2F3C] py-12 border-t border-white/10">
+      <div className="relative overflow-hidden bg-gradient-to-r from-primary-dark/30 to-primary/30 py-12 border-t border-primary/20">
         <div className="absolute inset-0 -z-10">
           {[...Array(5)].map((_, i) => (
             <div 
