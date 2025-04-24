@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star, Quote } from 'lucide-react';
 
@@ -5,13 +6,13 @@ const reviews = [
   {
     id: 1,
     text: "Thank you!! Legit and Amazing :)",
-    author: "User123",
+    author: "Buyer",
     rating: 5
   },
   {
     id: 2,
     text: "Really friendly Staff and Decent Script",
-    author: "GamerPro",
+    author: "a1_x",
     rating: 4
   },
   {

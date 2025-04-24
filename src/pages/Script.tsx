@@ -23,9 +23,39 @@ const Script = () => {
 
   return (
     <div className="relative pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden">
-      {/* Animated Background */}
+      {/* Animated Background with Stars and Lines */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
+          {/* Moving stars (dots) */}
+          {[...Array(100)].map((_, i) => (
+            <div
+              key={`star-${i}`}
+              className="absolute rounded-full bg-white"
+              style={{
+                width: Math.random() * 2 + 1 + 'px',
+                height: Math.random() * 2 + 1 + 'px',
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.1,
+                animation: `twinkle ${Math.random() * 5 + 3}s ease-in-out infinite`
+              }}
+            />
+          ))}
+          
+          {/* Moving lines */}
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={`line-${i}`}
+              className="absolute h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              style={{
+                width: '100%',
+                top: `${(i + 1) * 15}%`,
+                animation: `floatingLine ${8 + i * 2}s linear infinite`,
+                animationDelay: `${i * 1}s`
+              }}
+            />
+          ))}
+        </div>
       </div>
 
       <motion.div
@@ -33,20 +63,26 @@ const Script = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h1 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/70">
+        <motion.h1 
+          className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-white/70"
+          animate={{ textShadow: ["0 0 5px rgba(255,255,255,0.2)", "0 0 15px rgba(255,255,255,0.4)", "0 0 5px rgba(255,255,255,0.2)"] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
           Universal Script
-        </h1>
+        </motion.h1>
         
         <div className="grid gap-6">
           <motion.div 
-            className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group"
-            whileHover={{ scale: 1.02 }}
+            className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group animate-glow"
+            whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255,255,255,0.3)" }}
           >
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-white">Script Hub</h2>
-              <button
+              <motion.button
                 onClick={copyToClipboard}
                 className="px-4 py-2 rounded-md bg-white/10 hover:bg-white/20 transition-all duration-300 flex items-center gap-2"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {isCopied ? (
                   <>
@@ -59,10 +95,10 @@ const Script = () => {
                     <span>Copy Code</span>
                   </>
                 )}
-              </button>
+              </motion.button>
             </div>
             
-            <div className="bg-black/50 p-4 rounded-md overflow-x-auto max-w-full">
+            <div className="bg-black/50 p-4 rounded-md overflow-x-auto max-w-full border border-white/10">
               <code className="text-white font-mono text-sm whitespace-pre-wrap break-all">{scriptCode}</code>
             </div>
           </motion.div>
