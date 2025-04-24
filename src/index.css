@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,7 +76,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#0A0A0A] text-white overflow-x-hidden;
+    @apply text-white overflow-x-hidden;
+    background: transparent;
   }
 }
 
