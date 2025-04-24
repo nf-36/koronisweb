@@ -1,6 +1,6 @@
 
 import { motion } from "framer-motion";
-import { Gamepad } from "lucide-react";
+import { GameController } from "lucide-react";
 
 const games = [
   "Murder Mystery 2",
@@ -21,7 +21,7 @@ const SupportedGames = () => {
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
         >
-          <Gamepad className="w-6 h-6 text-primary" />
+          <GameController className="w-6 h-6 text-primary" />
         </motion.div>
         <h2 className="text-2xl font-bold text-white">Supported Games</h2>
       </div>
