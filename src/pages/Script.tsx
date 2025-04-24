@@ -22,7 +22,12 @@ const Script = () => {
   };
 
   return (
-    <div className="pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden">
+    <div className="relative pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden">
+      {/* Animated Background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]"></div>
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -34,7 +39,7 @@ const Script = () => {
         
         <div className="grid gap-6">
           <motion.div 
-            className="p-6 rounded-lg bg-[#1A1F2C]/80 backdrop-blur-lg border border-white/10 transition-all duration-300 hover:border-white/20 group"
+            className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group"
             whileHover={{ scale: 1.02 }}
           >
             <div className="flex justify-between items-center mb-4">

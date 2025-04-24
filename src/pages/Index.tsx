@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
@@ -14,24 +13,9 @@ const Index = () => {
 
   return (
     <div className="overflow-hidden">
-      {/* Animated Background with Lines */}
-      <div className="fixed inset-0 overflow-hidden -z-10">
-        <div className="background-grid opacity-20"></div>
-        
-        {/* Animated Lines */}
-        <div className="absolute inset-0">
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-white/30 to-transparent transform"
-              style={{
-                top: `${(i + 1) * 16}%`,
-                animationDelay: `${i * 2}s`,
-                animation: 'floatingLine 8s ease-in-out infinite'
-              }}
-            />
-          ))}
-        </div>
+      {/* Animated Background */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]"></div>
       </div>
 
       {/* Hero Section */}

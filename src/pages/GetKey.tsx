@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Lock, Gift, Clock, ArrowRight, ExternalLink, Link as LinkIcon } from 'lucide-react';
@@ -50,7 +49,11 @@ const GetKey = () => {
   ];
 
   return (
-    <div className="pt-24 px-4 max-w-6xl mx-auto">
+    <div className="relative min-h-screen pt-24 px-4">
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]"></div>
+      </div>
+
       <div className="text-center mb-12">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Get Access Key</h1>
         <p className="text-lg text-white/80 max-w-2xl mx-auto">Choose your preferred key type to access our Roblox script hub</p>
