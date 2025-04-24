@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Lock, Gift, Clock, ArrowRight, ExternalLink, Link as LinkIcon } from 'lucide-react';
@@ -115,7 +116,7 @@ const GetKey = () => {
             <h3 className="text-xl font-bold mb-4 text-white">Community</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Discord Server</a>
+                <a href="https://discord.gg/Koronis" className="text-gray-400 hover:text-white transition-colors">Discord Server</a>
               </li>
               <li>
                 <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
