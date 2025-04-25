@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -65,7 +66,8 @@
   }
 
   body {
-    @apply bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#1e3a8a] min-h-screen overflow-x-hidden;
+    @apply min-h-screen overflow-x-hidden;
+    background: transparent;
   }
 }
 
@@ -74,7 +76,8 @@
     @apply border-border;
   }
   body {
-    @apply bg-[#0A0A0A] text-white overflow-x-hidden;
+    @apply text-white overflow-x-hidden;
+    background: transparent;
   }
 }
 
@@ -167,8 +170,22 @@
   text-shadow: 0 0 15px rgba(155, 135, 245, 0.6);
 }
 
-.bg-blur {
-  backdrop-filter: blur(10px);
+@layer utilities {
+  .bg-blur {
+    backdrop-filter: blur(10px);
+  }
+
+  .glass-panel {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+  }
+  
+  .neo-blur {
+    @apply backdrop-blur-2xl bg-black/40 border border-white/10;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
+  }
 }
 
 .animated-line {
