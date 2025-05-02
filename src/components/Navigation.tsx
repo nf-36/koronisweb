@@ -11,7 +11,7 @@ const Navigation = () => {
   ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/5 backdrop-blur-lg border-b border-white/10 z-50">
+    <nav className="fixed top-0 w-full bg-transparent backdrop-blur-lg border-b border-white/10 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-2">
@@ -34,7 +34,7 @@ const Navigation = () => {
               >
                 <Link
                   to={link.path}
-                  className="text-gray-300 hover:text-white font-medium transition-colors"
+                  className="text-blue-300 hover:text-white font-medium transition-colors"
                 >
                   {link.name}
                 </Link>

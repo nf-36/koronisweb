@@ -13,7 +13,7 @@ const games = [
 const SupportedGames = () => {
   return (
     <motion.div 
-      className="p-6 rounded-lg bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20"
+      className="p-6 rounded-lg glass-panel border border-primary/20"
       whileHover={{ borderColor: "rgba(255,255,255,0.2)" }}
     >
       <div className="flex items-center gap-3 mb-4">
@@ -34,7 +34,7 @@ const SupportedGames = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.02, backgroundColor: "rgba(255,255,255,0.1)" }}
-            className="p-3 rounded bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300"
+            className="p-3 rounded bg-transparent backdrop-blur-sm border border-white/10 transition-all duration-300"
           >
             {game}
           </motion.div>

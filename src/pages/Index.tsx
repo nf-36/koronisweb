@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
@@ -47,6 +46,7 @@ const Index = () => {
     <div className="overflow-hidden">
       <div className="fixed inset-0 -z-10 overflow-hidden animated-bg">
         <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#1e3a8a]">
+          {/* Background stars */}
           {[...Array(100)].map((_, i) => (
             <div
               key={`star-${i}`}
@@ -62,6 +62,7 @@ const Index = () => {
             />
           ))}
           
+          {/* Animated lines */}
           {[...Array(8)].map((_, i) => (
             <div
               key={`line-${i}`}
