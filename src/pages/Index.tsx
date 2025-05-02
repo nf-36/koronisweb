@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
@@ -88,14 +89,14 @@ const Index = () => {
             animate={{ y: [0, -20, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           >
-            <Star className="w-12 h-12 text-white mx-auto mb-4 filter drop-shadow-lg" />
+            <Star className="w-12 h-12 text-yellow-400 fill-yellow-400 mx-auto mb-4 filter drop-shadow-lg" />
           </motion.div>
           
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300"
+            className="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-sky-300"
           >
             Koronis Script Hub
           </motion.h1>
@@ -118,7 +119,7 @@ const Index = () => {
           >
             <Link 
               to="/script" 
-              className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-primary/10 hover:bg-primary/20 rounded-lg border border-white/10 transition-all duration-300 backdrop-blur-md shadow-lg"
+              className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-sky-500/10 hover:bg-sky-500/20 rounded-lg border border-sky-300/10 transition-all duration-300 backdrop-blur-md shadow-lg"
             >
               Explore Scripts
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -136,18 +137,18 @@ const Index = () => {
         viewport={{ once: true }}
         className="py-20 px-4"
       >
-        <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300">
+        <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-sky-300">
           What Our Users Say
         </h2>
         <ReviewCarousel />
       </motion.div>
 
-      <div className="relative overflow-hidden bg-gradient-to-r from-primary-dark/30 to-primary/30 py-12 border-t border-primary/20">
+      <div className="relative overflow-hidden bg-gradient-to-r from-sky-900/30 to-sky-700/30 py-12 border-t border-sky-300/20">
         <div className="absolute inset-0 -z-10">
           {[...Array(5)].map((_, i) => (
             <div 
               key={`banner-line-${i}`} 
-              className="absolute h-[1px] w-[200%] bg-gradient-to-r from-transparent via-[#5865F2]/30 to-transparent"
+              className="absolute h-[1px] w-[200%] bg-gradient-to-r from-transparent via-sky-300/30 to-transparent"
               style={{ 
                 top: `${(i + 1) * 20}%`, 
                 left: '-50%',

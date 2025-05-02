@@ -34,7 +34,7 @@ const Navigation = () => {
               >
                 <Link
                   to={link.path}
-                  className="text-blue-300 hover:text-white font-medium transition-colors"
+                  className="text-gray-300 hover:text-white font-medium transition-colors"
                 >
                   {link.name}
                 </Link>
