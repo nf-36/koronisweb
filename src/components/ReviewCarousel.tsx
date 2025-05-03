@@ -75,7 +75,7 @@ const ReviewCarousel = () => {
           <div className="text-center mx-8 transition-all duration-300 transform">
             <div className="flex justify-center mb-6">
               {[...Array(reviews[currentIndex].rating)].map((_, i) => (
-                <Star key={i} className="w-6 h-6 text-yellow-400 fill-yellow-400" />
+                <Star key={i} className="w-6 h-6 text-white stroke-white" />
               ))}
               {[...Array(5 - reviews[currentIndex].rating)].map((_, i) => (
                 <Star key={i + reviews[currentIndex].rating} className="w-6 h-6 text-gray-600" />
