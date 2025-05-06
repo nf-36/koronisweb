@@ -1,9 +1,31 @@
+
 import { motion } from 'framer-motion';
+import { Activity, Calendar, Users } from 'lucide-react';
+import { Progress } from './ui/progress';
 
 const stats = [
-  { label: 'Active Users', value: '4,000+' },
-  { label: 'Scripts Executed', value: '100,000+' },
-  { label: 'Games Supported', value: '50+' },
+  { 
+    label: 'Monthly Executions', 
+    value: '265K+',
+    icon: <Activity className="h-6 w-6" />,
+    color: 'bg-green-500',
+    detail: '265,438 executions this month'
+  },
+  { 
+    label: 'Up Time', 
+    value: '6 Months',
+    icon: <Calendar className="h-6 w-6" />,
+    color: 'bg-sky-500',
+    detail: 'Online since December 2024'
+  },
+  { 
+    label: 'Total Users', 
+    value: '4,000+',
+    icon: <Users className="h-6 w-6" />,
+    color: 'bg-blue-500',
+    detail: '4,000/10000',
+    progress: 40
+  },
 ];
 
 const Stats = () => {
@@ -17,10 +39,25 @@ const Stats = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.2 }}
-              className="glass-panel p-8 rounded-xl hover:shadow-lg hover:shadow-primary/10 transition-all duration-300"
+              className="glass-panel rounded-xl overflow-hidden border border-sky-300/10 hover:border-sky-300/20 transition-all duration-300"
             >
-              <dt className="text-lg font-medium text-primary-light mb-2">{stat.label}</dt>
-              <dd className="text-4xl font-bold tracking-tight text-white">{stat.value}</dd>
+              <div className="flex items-start p-6">
+                <div className={`${stat.color} p-3 rounded-lg mr-4 flex items-center justify-center`}>
+                  {stat.icon}
+                </div>
+                <div className="flex flex-col items-end">
+                  <div className="text-gray-300 text-sm">{stat.label}</div>
+                  <div className="text-3xl font-bold text-white">{stat.value}</div>
+                </div>
+              </div>
+              <div className="px-6 pb-6 text-sm text-gray-400">
+                {stat.detail}
+                {stat.progress && (
+                  <div className="mt-2">
+                    <Progress value={stat.progress} className="h-1.5 bg-gray-700" />
+                  </div>
+                )}
+              </div>
             </motion.div>
           ))}
         </div>
