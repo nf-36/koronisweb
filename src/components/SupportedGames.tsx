@@ -1,16 +1,36 @@
 
 import { motion } from "framer-motion";
-import { Gamepad } from "lucide-react";
+import { Gamepad, Flame } from "lucide-react";
+import { useState, useEffect } from "react";
 
+// Updated games list
 const games = [
-  "Murder Mystery 2",
-  "Reborn as Swordsman",
-  "Collect All Pets",
+  "Beaks",
+  "Collect all Pets",
   "Grow a Garden",
-  "Beak"
+  "Murder Mystery 2",
+  "Grow a Tree",
+  "Jailbreak",
+  "Zombies RNG"
 ];
 
 const SupportedGames = () => {
+  const [fireIconGame, setFireIconGame] = useState<string | null>(null);
+  
+  // Set a random fire icon on component mount with 50% chance for each eligible game
+  useEffect(() => {
+    const eligibleGames = ["Jailbreak", "Murder Mystery 2"];
+    const randomNum = Math.random();
+    
+    // Only show fire if random number is less than 0.5 (50% chance)
+    if (randomNum < 0.5) {
+      const gameIndex = Math.floor(Math.random() * eligibleGames.length);
+      setFireIconGame(eligibleGames[gameIndex]);
+    } else {
+      setFireIconGame(null);
+    }
+  }, []);
+
   return (
     <motion.div 
       className="p-6 rounded-lg glass-panel border border-sky-300/20"
@@ -34,9 +54,18 @@ const SupportedGames = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
             whileHover={{ scale: 1.02, backgroundColor: "rgba(186, 230, 253, 0.1)" }}
-            className="p-3 rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300"
+            className="p-3 rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300 flex justify-between items-center"
           >
-            {game}
+            <span>{game}</span>
+            {fireIconGame === game && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ type: "spring" }}
+              >
+                <Flame className="w-5 h-5 text-orange-500" />
+              </motion.div>
+            )}
           </motion.div>
         ))}
       </div>

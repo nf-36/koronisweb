@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Copy, Check, Star } from 'lucide-react';
+import { Copy, Check } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 import SupportedGames from '../components/SupportedGames';
 import { motion } from 'framer-motion';
@@ -24,7 +24,7 @@ const Script = () => {
   return (
     <div className="relative pt-24 px-4 max-w-4xl mx-auto overflow-x-hidden min-h-screen">
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460] animate-gradient">
           {[...Array(100)].map((_, i) => (
             <div
               key={`star-${i}`}
@@ -60,14 +60,6 @@ const Script = () => {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <motion.div 
-          className="mb-8"
-          animate={{ y: [0, -20, 0] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Star className="w-12 h-12 text-white mx-auto mb-4 filter drop-shadow-lg" />
-        </motion.div>
-        
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}

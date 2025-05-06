@@ -1,141 +1,149 @@
 
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Lock, Gift, Clock, ArrowRight, ExternalLink, Link as LinkIcon } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { useToast } from "@/hooks/use-toast";
+import { Gamepad } from 'lucide-react';
 
 const GetKey = () => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [key, setKey] = useState("");
+  const { toast } = useToast();
 
-  const keyOptions = [
-    {
-      id: 'linkvertise',
-      title: 'Linkvertise',
-      description: 'Get your key through Linkvertise',
-      icon: <ExternalLink className="w-6 h-6" />,
-      buttonText: 'Get Key (Linkvertise)',
-      url: 'https://ads.luarmor.net/get_key?for=Free_Linkvertise-VCrPMxzUQEDq',
-      popular: true,
-      estimatedTime: '1-2 minutes'
-    },
-    {
-      id: 'lootlabs',
-      title: 'LootLabs',
-      description: 'Complete LootLabs tasks for access',
-      icon: <Gift className="w-6 h-6" />,
-      buttonText: 'Get Key (LootLabs)',
-      url: 'https://ads.luarmor.net/get_key?for=Free_72H-oCmVwmZqQgsE',
-      popular: false,
-      estimatedTime: '2-3 minutes'
-    },
-    {
-      id: 'workink',
-      title: 'Work.ink',
-      description: 'Quick access through Work.ink',
-      icon: <LinkIcon className="w-6 h-6" />,
-      buttonText: 'Get Key (Work.ink)',
-      url: 'https://ads.luarmor.net/get_key?for=WorkInk-osqZmHsdsZVE',
-      popular: false,
-      estimatedTime: '1 minute'
-    },
-    {
-      id: 'arcstore',
-      title: 'Lifetime Arcstore',
-      description: 'Get lifetime access through Arcstore',
-      icon: <Lock className="w-6 h-6" />,
-      buttonText: 'Get Key (Arcstore)',
-      url: 'https://arcstore.mysellauth.com/',
-      popular: false,
-      estimatedTime: 'Permanent'
-    }
-  ];
+  const generateKey = () => {
+    setIsGenerating(true);
+
+    // Simulate a key generation process
+    setTimeout(() => {
+      const newKey = "KORONIS-" + Math.random().toString(36).substring(2, 10).toUpperCase() + "-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+      setKey(newKey);
+      setIsGenerating(false);
+      toast({
+        title: "Key Generated",
+        description: "Your script key has been successfully generated.",
+      });
+    }, 1500);
+  };
+
+  const copyToClipboard = async () => {
+    if (!key) return;
+    await navigator.clipboard.writeText(key);
+    toast({
+      title: "Copied!",
+      description: "Key copied to clipboard",
+      duration: 2000,
+    });
+  };
 
   return (
-    <div className="relative min-h-screen pt-24 px-4">
+    <div className="relative pt-24 px-4 max-w-4xl mx-auto min-h-screen">
+      {/* Dark blue animated background */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]"></div>
-      </div>
-
-      <div className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">Get Access Key</h1>
-        <p className="text-lg text-white/80 max-w-2xl mx-auto">Choose your preferred key type to access our Roblox script hub</p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {keyOptions.map((option) => (
-          <div 
-            key={option.id}
-            onClick={() => setSelectedOption(option.id)}
-            className={`relative overflow-hidden rounded-xl p-6 transition-all duration-300 cursor-pointer ${
-              selectedOption === option.id 
-                ? 'border-2 border-primary bg-secondary/70 scale-[1.02]' 
-                : 'border border-primary/20 bg-secondary/40 hover:bg-secondary/60'
-            }`}
-          >
-            {option.popular && (
-              <div className="absolute top-4 right-4">
-                <div className="bg-primary/90 text-xs font-bold px-3 py-1 rounded-full">
-                  POPULAR
-                </div>
-              </div>
-            )}
-            
-            <div className="flex flex-col items-center text-center">
-              <div className={`rounded-full p-3 mb-4 ${
-                selectedOption === option.id ? 'bg-primary text-background' : 'bg-secondary text-primary'
-              }`}>
-                {option.icon}
-              </div>
-              
-              <h2 className="text-xl font-bold mb-2 text-white">{option.title}</h2>
-              <p className="text-gray-400 mb-4">{option.description}</p>
-              <div className="bg-background/30 px-4 py-1 rounded-full text-sm mb-6 text-white/70">
-                Duration: {option.estimatedTime}
-              </div>
-              
-              <a 
-                href={option.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`flex items-center space-x-2 px-6 py-3 rounded-lg text-sm font-bold transition-all ${
-                  selectedOption === option.id
-                    ? 'bg-primary text-background hover:bg-primary/90'
-                    : 'bg-secondary/80 text-white hover:bg-secondary'
-                }`}
-              >
-                <span>{option.buttonText}</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="mt-16 text-center">
-        <div className="grid grid-cols-2 gap-8 max-w-4xl mx-auto">
-          <div className="text-left">
-            <h3 className="text-xl font-bold mb-4 text-white">Community</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="https://discord.gg/Koronis" className="text-gray-400 hover:text-white transition-colors">Discord Server</a>
-              </li>
-              <li>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
-              </li>
-            </ul>
-          </div>
-          <div className="text-left">
-            <h3 className="text-xl font-bold mb-4 text-white">Quick Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/script" className="text-gray-400 hover:text-white transition-colors">Get Script</Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Us</Link>
-              </li>
-            </ul>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460] animate-gradient">
+          {/* Animated background particles */}
+          <div className="absolute inset-0">
+            {[...Array(20)].map((_, i) => (
+              <div 
+                key={i}
+                className="absolute rounded-full bg-white/10"
+                style={{
+                  width: `${Math.random() * 6 + 2}px`,
+                  height: `${Math.random() * 6 + 2}px`,
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  opacity: Math.random() * 0.5 + 0.3,
+                  animation: `floatingParticle ${Math.random() * 15 + 10}s linear infinite`,
+                  animationDelay: `${Math.random() * 5}s`,
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>
+      
+      <div className="text-center mb-12">
+        <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white via-primary to-white/70"
+        >
+          Get Your Key
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.7 }}
+          className="text-lg text-gray-300 max-w-2xl mx-auto"
+        >
+          Generate a unique script key to access all our premium features.
+        </motion.p>
+      </div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4, duration: 0.7 }}
+        className="max-w-lg mx-auto"
+      >
+        <div className="p-8 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 shadow-xl">
+          <div className="flex items-center gap-4 mb-6">
+            <div className="p-3 rounded-lg bg-background/20">
+              <Gamepad className="w-6 h-6 text-sky-300" />
+            </div>
+            <h2 className="text-2xl font-bold text-white">Script Key Generator</h2>
+          </div>
+          
+          {key ? (
+            <>
+              <div className="p-4 bg-background/30 border border-white/10 rounded-lg mb-6 relative overflow-hidden group">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-[line-flow_3s_linear_infinite]"></div>
+                <p className="font-mono text-lg text-sky-300 break-all">{key}</p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <button
+                  onClick={generateKey}
+                  className="py-3 px-4 rounded-lg bg-sky-600/40 hover:bg-sky-600/60 text-white font-medium transition-all duration-300"
+                >
+                  Generate New Key
+                </button>
+                <button
+                  onClick={copyToClipboard}
+                  className="py-3 px-4 rounded-lg bg-primary/20 hover:bg-primary/40 text-white font-medium transition-all duration-300"
+                >
+                  Copy Key
+                </button>
+              </div>
+            </>
+          ) : (
+            <button
+              onClick={generateKey}
+              disabled={isGenerating}
+              className="w-full py-4 px-6 rounded-lg bg-gradient-to-r from-sky-600/70 to-blue-700/70 hover:from-sky-600 hover:to-blue-700 text-white font-medium transition-all duration-300 relative overflow-hidden"
+            >
+              {isGenerating ? (
+                <>
+                  <span className="opacity-0">Generate Key</span>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-6 h-6 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  </div>
+                </>
+              ) : (
+                "Generate Key"
+              )}
+            </button>
+          )}
+          
+          <div className="mt-8 text-sm text-gray-400">
+            <p className="mb-2">Your key will:</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>Expire after 24 hours</li>
+              <li>Work with all supported games</li>
+              <li>Allow unlimited executions</li>
+            </ul>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

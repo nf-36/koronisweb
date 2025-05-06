@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
-import { Star, ArrowRight, MessageSquare } from 'lucide-react';
+import { ArrowRight, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
@@ -46,7 +45,7 @@ const Index = () => {
   return (
     <div className="overflow-hidden">
       <div className="fixed inset-0 -z-10 overflow-hidden animated-bg">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#020617] via-[#0f172a] to-[#1e3a8a]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
           {/* Background stars */}
           {[...Array(100)].map((_, i) => (
             <div
@@ -84,14 +83,6 @@ const Index = () => {
         className="min-h-screen flex flex-col items-center justify-center pt-20 px-4"
       >
         <div className="relative z-10 text-center max-w-4xl mx-auto">
-          <motion.div 
-            className="mb-8 animate-float"
-            animate={{ y: [0, -20, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <Star className="w-12 h-12 text-yellow-400 fill-yellow-400 mx-auto mb-4 filter drop-shadow-lg" />
-          </motion.div>
-          
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
