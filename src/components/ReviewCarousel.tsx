@@ -20,6 +20,12 @@ const reviews = [
     text: "Everything works perfectly!",
     author: "ScriptUser",
     rating: 5
+  },
+  {
+    id: 4,
+    text: "Auto Feedback After 7 Days",
+    author: "Auto Feedback",
+    rating: 5
   }
 ];
 

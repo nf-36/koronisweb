@@ -22,12 +22,11 @@ const SupportedGames = () => {
     const eligibleGames = ["Jailbreak", "Murder Mystery 2"];
     const randomNum = Math.random();
     
-    // Only show fire if random number is less than 0.5 (50% chance)
+    // Only show fire icon for one game
     if (randomNum < 0.5) {
-      const gameIndex = Math.floor(Math.random() * eligibleGames.length);
-      setFireIconGame(eligibleGames[gameIndex]);
+      setFireIconGame("Jailbreak"); // Force Jailbreak to have the fire icon
     } else {
-      setFireIconGame(null);
+      setFireIconGame("Murder Mystery 2");
     }
   }, []);
 
