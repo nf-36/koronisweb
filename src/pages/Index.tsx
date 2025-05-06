@@ -1,18 +1,31 @@
+
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
-import { ArrowRight, MessageSquare } from 'lucide-react';
+import { ArrowRight, MessageSquare, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
+import { Toggle } from '@/components/ui/toggle';
+import { Switch } from '@/components/ui/switch';
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const { toast } = useToast();
   const [lastNotificationTime, setLastNotificationTime] = useState<number | null>(null);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     setMounted(true);
+
+    // Apply theme class to body
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+    } else {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+    }
 
     const checkForNotification = () => {
       const currentTime = Date.now();
@@ -40,7 +53,11 @@ const Index = () => {
     const intervalId = setInterval(checkForNotification, 60000);
 
     return () => clearInterval(intervalId);
-  }, [lastNotificationTime, toast]);
+  }, [lastNotificationTime, toast, isDarkMode]);
+
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+  };
 
   return (
     <div className="overflow-hidden">
@@ -73,6 +90,17 @@ const Index = () => {
               }}
             />
           ))}
+        </div>
+      </div>
+
+      <div className="absolute top-24 right-8 z-50">
+        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-2 rounded-full border border-white/20">
+          <Sun className="h-4 w-4 text-yellow-400" />
+          <Switch 
+            checked={isDarkMode}
+            onCheckedChange={toggleTheme}
+          />
+          <Moon className="h-4 w-4 text-blue-300" />
         </div>
       </div>
 
