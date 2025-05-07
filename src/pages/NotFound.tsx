@@ -19,11 +19,11 @@ const NotFound = () => {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
-        className="text-center p-8 bg-black/30 backdrop-blur-md rounded-xl border border-white/10"
+        className="text-center p-8 bg-secondary/50 backdrop-blur-md rounded-xl border border-primary/20"
       >
         <motion.h1 
           className="text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300"
-          animate={{ textShadow: ["0 0 5px rgba(255,255,255,0.2)", "0 0 15px rgba(255,255,255,0.4)", "0 0 5px rgba(255,255,255,0.2)"] }}
+          animate={{ textShadow: ["0 0 5px rgba(33, 150, 243, 0.2)", "0 0 15px rgba(33, 150, 243, 0.4)", "0 0 5px rgba(33, 150, 243, 0.2)"] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
           404

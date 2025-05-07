@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 -z-20 min-h-screen w-full overflow-hidden bg-[#030303]">
+    <div className="fixed inset-0 -z-20 min-h-screen w-full overflow-hidden bg-[#0c1a33]">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/[0.05] via-transparent to-rose-500/[0.05] blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.08] via-transparent to-indigo-400/[0.08] blur-3xl" />
 
       {/* Elegant shapes */}
       <div className="absolute inset-0 overflow-hidden">
@@ -15,7 +15,7 @@ export default function Background() {
           width={600}
           height={140}
           rotate={12}
-          gradient="from-indigo-500/[0.15]"
+          gradient="from-blue-500/[0.12]"
           className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
         />
 
@@ -24,7 +24,7 @@ export default function Background() {
           width={500}
           height={120}
           rotate={-15}
-          gradient="from-rose-500/[0.15]"
+          gradient="from-indigo-400/[0.12]"
           className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
         />
 
@@ -33,7 +33,7 @@ export default function Background() {
           width={300}
           height={80}
           rotate={-8}
-          gradient="from-violet-500/[0.15]"
+          gradient="from-blue-400/[0.12]"
           className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
         />
 
@@ -42,7 +42,7 @@ export default function Background() {
           width={200}
           height={60}
           rotate={20}
-          gradient="from-amber-500/[0.15]"
+          gradient="from-blue-300/[0.12]"
           className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
         />
 
@@ -51,13 +51,13 @@ export default function Background() {
           width={150}
           height={40}
           rotate={-25}
-          gradient="from-cyan-500/[0.15]"
+          gradient="from-indigo-300/[0.12]"
           className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
         />
       </div>
 
-      {/* Gradient overlay for top and bottom fade */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#030303] via-transparent to-[#030303]/80 pointer-events-none" />
+      {/* Gradient overlay for top and bottom fade - more transparent */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a33]/90 via-transparent to-[#0c1a33]/70 pointer-events-none" />
     </div>
   );
 }

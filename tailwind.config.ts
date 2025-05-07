@@ -7,23 +7,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#030303",
+        background: "#0c1a33", // Bright normal blue
         foreground: "#ffffff",
         primary: {
-          DEFAULT: "#2563eb", // Bright blue
-          hover: "#1d4ed8",
-          light: "#60a5fa",
-          dark: "#1e40af"
+          DEFAULT: "#1E88E5", // Bright blue
+          hover: "#1976D2",
+          light: "#64B5F6",
+          dark: "#0D47A1"
         },
         secondary: {
-          DEFAULT: "#1e293b",
-          hover: "#334155"
+          DEFAULT: "#0d2042",
+          hover: "#16325f"
         },
         accent: {
-          DEFAULT: "#3b82f6",
-          hover: "#2563eb"
+          DEFAULT: "#2196F3",
+          hover: "#1E88E5"
         },
-        border: "rgba(59, 130, 246, 0.2)", // Subtle blue border
+        border: "rgba(33, 150, 243, 0.2)", // Subtle blue border
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],

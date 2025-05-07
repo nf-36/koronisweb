@@ -56,7 +56,7 @@ const Index = () => {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.7 }}
-            className="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-sky-300"
+            className="text-5xl md:text-7xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300"
           >
             Koronis Script Hub
           </motion.h1>
@@ -79,7 +79,7 @@ const Index = () => {
           >
             <Link 
               to="/script" 
-              className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-sky-500/10 hover:bg-sky-500/20 rounded-lg border border-sky-300/10 transition-all duration-300 backdrop-blur-md shadow-lg"
+              className="inline-flex items-center px-8 py-4 text-lg font-medium text-white bg-primary/20 hover:bg-primary/30 rounded-lg border border-primary/20 transition-all duration-300 backdrop-blur-md shadow-lg"
             >
               Explore Scripts
               <ArrowRight className="ml-2 w-5 h-5" />
@@ -97,13 +97,13 @@ const Index = () => {
         viewport={{ once: true }}
         className="py-20 px-4"
       >
-        <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-sky-300">
+        <h2 className="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300">
           What Our Users Say
         </h2>
         <ReviewCarousel />
       </motion.div>
 
-      <div className="relative overflow-hidden bg-gradient-to-r from-sky-900/30 to-sky-700/30 py-12 border-t border-sky-300/20">
+      <div className="py-12 border-t border-blue-400/20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

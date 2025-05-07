@@ -45,7 +45,7 @@ const Script = () => {
         >
           <motion.div 
             className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group"
-            whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(255,255,255,0.3)" }}
+            whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(33, 150, 243, 0.3)" }}
           >
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-white">Script Hub</h2>
