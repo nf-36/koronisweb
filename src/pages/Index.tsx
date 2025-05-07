@@ -2,29 +2,18 @@
 import { useState, useEffect } from 'react';
 import Stats from '../components/Stats';
 import ReviewCarousel from '../components/ReviewCarousel';
-import { ArrowRight, MessageSquare, Sun, Moon } from 'lucide-react';
+import { ArrowRight, MessageSquare } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
-import { Switch } from '@/components/ui/switch';
 
 const Index = () => {
   const [mounted, setMounted] = useState(false);
   const { toast } = useToast();
   const [lastNotificationTime, setLastNotificationTime] = useState<number | null>(null);
-  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     setMounted(true);
-
-    // Apply theme class to body
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.add('light');
-      document.documentElement.classList.remove('dark');
-    }
 
     const checkForNotification = () => {
       const currentTime = Date.now();
@@ -52,18 +41,14 @@ const Index = () => {
     const intervalId = setInterval(checkForNotification, 60000);
 
     return () => clearInterval(intervalId);
-  }, [lastNotificationTime, toast, isDarkMode]);
-
-  const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-  };
+  }, [lastNotificationTime, toast]);
 
   return (
     <div className="overflow-hidden">
       <div className="fixed inset-0 -z-10 overflow-hidden animated-bg">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1128] via-[#1B2A4E] to-[#2B4072]">
           {/* Background stars */}
-          {[...Array(100)].map((_, i) => (
+          {[...Array(150)].map((_, i) => (
             <div
               key={`star-${i}`}
               className="star"
@@ -79,13 +64,13 @@ const Index = () => {
           ))}
           
           {/* Animated floating particles */}
-          {[...Array(20)].map((_, i) => (
+          {[...Array(30)].map((_, i) => (
             <div 
               key={`particle-${i}`}
-              className="absolute rounded-full bg-white/10"
+              className="absolute rounded-full bg-sky-300/20"
               style={{
-                width: `${Math.random() * 6 + 2}px`,
-                height: `${Math.random() * 6 + 2}px`,
+                width: `${Math.random() * 8 + 3}px`,
+                height: `${Math.random() * 8 + 3}px`,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 opacity: Math.random() * 0.5 + 0.3,
@@ -96,27 +81,56 @@ const Index = () => {
           ))}
           
           {/* Animated lines */}
-          {[...Array(8)].map((_, i) => (
+          {[...Array(10)].map((_, i) => (
             <div
               key={`line-${i}`}
               className="animated-line"
               style={{
-                top: `${(i + 1) * 12}%`,
-                animationDelay: `${i * 1}s`
+                top: `${(i + 1) * 10}%`,
+                animationDelay: `${i * 0.8}s`
               }}
             />
           ))}
-        </div>
-      </div>
-
-      <div className="absolute top-24 right-8 z-50">
-        <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-2 rounded-full border border-white/20">
-          <Sun className="h-4 w-4 text-yellow-400" />
-          <Switch 
-            checked={isDarkMode}
-            onCheckedChange={toggleTheme}
-          />
-          <Moon className="h-4 w-4 text-blue-300" />
+          
+          {/* Additional animated circles */}
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={`circle-${i}`}
+              className="absolute rounded-full border border-sky-300/20"
+              style={{
+                width: `${Math.random() * 300 + 100}px`,
+                height: `${Math.random() * 300 + 100}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.4 + 0.1,
+                animation: `float ${Math.random() * 20 + 20}s ease-in-out infinite, 
+                            rotate ${Math.random() * 60 + 60}s linear infinite`,
+                animationDelay: `${Math.random() * 10}s`,
+              }}
+            />
+          ))}
+          
+          {/* Blurred light orbs */}
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={`orb-${i}`}
+              className="absolute rounded-full blur-3xl"
+              style={{
+                background: `radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0) 70%)`,
+                width: `${Math.random() * 400 + 200}px`,
+                height: `${Math.random() * 400 + 200}px`,
+                top: `${Math.random() * 120 - 10}%`,
+                left: `${Math.random() * 120 - 10}%`,
+                opacity: Math.random() * 0.3 + 0.1,
+                animation: `float ${Math.random() * 30 + 30}s ease-in-out infinite`,
+                animationDelay: `${Math.random() * 10}s`,
+                transform: `scale(${Math.random() * 0.5 + 0.8})`,
+              }}
+            />
+          ))}
+          
+          {/* Background grid pattern */}
+          <div className="absolute inset-0 background-grid opacity-20"></div>
         </div>
       </div>
 

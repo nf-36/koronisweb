@@ -5,10 +5,10 @@ import { Activity, Calendar, Users } from 'lucide-react';
 const stats = [
   { 
     label: 'Monthly Executions', 
-    value: '265K+',
+    value: '286K+',
     icon: <Activity className="h-6 w-6 text-white" />,
     color: 'bg-gradient-to-br from-green-400 to-green-600',
-    detail: '265,438 executions this month'
+    detail: '286,947 executions this month'
   },
   { 
     label: 'Up Time', 
@@ -19,10 +19,10 @@ const stats = [
   },
   { 
     label: 'Total Users', 
-    value: '4,000+',
+    value: '2,090',
     icon: <Users className="h-6 w-6 text-white" />,
     color: 'bg-gradient-to-br from-blue-400 to-blue-600',
-    detail: '4,000/10000'
+    detail: '2,090 active users'
   },
 ];
 
