@@ -45,95 +45,6 @@ const Index = () => {
 
   return (
     <div className="overflow-hidden">
-      <div className="fixed inset-0 -z-10 overflow-hidden animated-bg">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0A1128] via-[#1B2A4E] to-[#2B4072]">
-          {/* Background stars */}
-          {[...Array(150)].map((_, i) => (
-            <div
-              key={`star-${i}`}
-              className="star"
-              style={{
-                width: Math.random() * 3 + 1 + 'px',
-                height: Math.random() * 3 + 1 + 'px',
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                animation: `twinkle ${Math.random() * 5 + 3}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 5}s`
-              }}
-            />
-          ))}
-          
-          {/* Animated floating particles */}
-          {[...Array(30)].map((_, i) => (
-            <div 
-              key={`particle-${i}`}
-              className="absolute rounded-full bg-sky-300/20"
-              style={{
-                width: `${Math.random() * 8 + 3}px`,
-                height: `${Math.random() * 8 + 3}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.3,
-                animation: `floatingParticle ${Math.random() * 15 + 10}s linear infinite`,
-                animationDelay: `${Math.random() * 5}s`,
-              }}
-            />
-          ))}
-          
-          {/* Animated lines */}
-          {[...Array(10)].map((_, i) => (
-            <div
-              key={`line-${i}`}
-              className="animated-line"
-              style={{
-                top: `${(i + 1) * 10}%`,
-                animationDelay: `${i * 0.8}s`
-              }}
-            />
-          ))}
-          
-          {/* Additional animated circles */}
-          {[...Array(6)].map((_, i) => (
-            <div
-              key={`circle-${i}`}
-              className="absolute rounded-full border border-sky-300/20"
-              style={{
-                width: `${Math.random() * 300 + 100}px`,
-                height: `${Math.random() * 300 + 100}px`,
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.4 + 0.1,
-                animation: `float ${Math.random() * 20 + 20}s ease-in-out infinite, 
-                            rotate ${Math.random() * 60 + 60}s linear infinite`,
-                animationDelay: `${Math.random() * 10}s`,
-              }}
-            />
-          ))}
-          
-          {/* Blurred light orbs */}
-          {[...Array(8)].map((_, i) => (
-            <div
-              key={`orb-${i}`}
-              className="absolute rounded-full blur-3xl"
-              style={{
-                background: `radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(56, 189, 248, 0) 70%)`,
-                width: `${Math.random() * 400 + 200}px`,
-                height: `${Math.random() * 400 + 200}px`,
-                top: `${Math.random() * 120 - 10}%`,
-                left: `${Math.random() * 120 - 10}%`,
-                opacity: Math.random() * 0.3 + 0.1,
-                animation: `float ${Math.random() * 30 + 30}s ease-in-out infinite`,
-                animationDelay: `${Math.random() * 10}s`,
-                transform: `scale(${Math.random() * 0.5 + 0.8})`,
-              }}
-            />
-          ))}
-          
-          {/* Background grid pattern */}
-          <div className="absolute inset-0 background-grid opacity-20"></div>
-        </div>
-      </div>
-
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -193,20 +104,6 @@ const Index = () => {
       </motion.div>
 
       <div className="relative overflow-hidden bg-gradient-to-r from-sky-900/30 to-sky-700/30 py-12 border-t border-sky-300/20">
-        <div className="absolute inset-0 -z-10">
-          {[...Array(5)].map((_, i) => (
-            <div 
-              key={`banner-line-${i}`} 
-              className="absolute h-[1px] w-[200%] bg-gradient-to-r from-transparent via-sky-300/30 to-transparent"
-              style={{ 
-                top: `${(i + 1) * 20}%`, 
-                left: '-50%',
-                animation: `floatingLine ${10 + i * 3}s linear infinite`,
-              }}
-            />
-          ))}
-        </div>
-        
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

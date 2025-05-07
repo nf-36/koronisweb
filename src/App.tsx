@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
+import Background from "./components/Background";
 import Index from "./pages/Index";
 import Script from "./pages/Script";
 import GetKey from "./pages/GetKey";
@@ -16,7 +17,8 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <div className="min-h-screen bg-background text-foreground font-sans">
+      <div className="min-h-screen bg-transparent text-foreground font-sans relative">
+        <Background />
         <Router>
           <Toaster />
           <Sonner />

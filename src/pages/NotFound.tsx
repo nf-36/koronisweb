@@ -15,41 +15,6 @@ const NotFound = () => {
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      {/* Animated Background with Stars and Lines */}
-      <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1A1A2E] via-[#16213E] to-[#0F3460]">
-          {/* Moving stars (dots) */}
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={`star-${i}`}
-              className="absolute rounded-full bg-white"
-              style={{
-                width: Math.random() * 2 + 1 + 'px',
-                height: Math.random() * 2 + 1 + 'px',
-                top: `${Math.random() * 100}%`,
-                left: `${Math.random() * 100}%`,
-                opacity: Math.random() * 0.5 + 0.1,
-                animation: `twinkle ${Math.random() * 5 + 3}s ease-in-out infinite`
-              }}
-            />
-          ))}
-          
-          {/* Moving lines */}
-          {[...Array(4)].map((_, i) => (
-            <div
-              key={`line-${i}`}
-              className="absolute h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              style={{
-                width: '100%',
-                top: `${(i + 1) * 20}%`,
-                animation: `floatingLine ${8 + i * 2}s linear infinite`,
-                animationDelay: `${i * 1}s`
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
