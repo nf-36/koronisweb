@@ -6,7 +6,6 @@ import { ArrowRight, MessageSquare, Sun, Moon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useToast } from "@/hooks/use-toast";
 import { motion } from 'framer-motion';
-import { Toggle } from '@/components/ui/toggle';
 import { Switch } from '@/components/ui/switch';
 
 const Index = () => {
@@ -75,6 +74,23 @@ const Index = () => {
                 left: `${Math.random() * 100}%`,
                 animation: `twinkle ${Math.random() * 5 + 3}s ease-in-out infinite`,
                 animationDelay: `${Math.random() * 5}s`
+              }}
+            />
+          ))}
+          
+          {/* Animated floating particles */}
+          {[...Array(20)].map((_, i) => (
+            <div 
+              key={`particle-${i}`}
+              className="absolute rounded-full bg-white/10"
+              style={{
+                width: `${Math.random() * 6 + 2}px`,
+                height: `${Math.random() * 6 + 2}px`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                opacity: Math.random() * 0.5 + 0.3,
+                animation: `floatingParticle ${Math.random() * 15 + 10}s linear infinite`,
+                animationDelay: `${Math.random() * 5}s`,
               }}
             />
           ))}
