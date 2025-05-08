@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Navigation = () => {
   const navLinks = [
-    { name: 'Home', path: '/' },
+    { name: 'Premium', path: '/premium' },
     { name: 'Script', path: '/script' },
     { name: 'Get Key', path: '/get-key' },
     { name: 'About Us', path: '/about' },

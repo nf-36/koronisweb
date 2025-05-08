@@ -15,19 +15,11 @@ const games = [
 ];
 
 const SupportedGames = () => {
-  const [fireIconGame, setFireIconGame] = useState<string | null>(null);
+  const [fireIconGames, setFireIconGames] = useState<string[]>([]);
   
-  // Set a random fire icon on component mount with 50% chance for each eligible game
+  // Set fire icons for Beaks and Grow A Garden
   useEffect(() => {
-    const eligibleGames = ["Jailbreak", "Murder Mystery 2"];
-    const randomNum = Math.random();
-    
-    // Only show fire icon for one game
-    if (randomNum < 0.5) {
-      setFireIconGame("Jailbreak"); // Force Jailbreak to have the fire icon
-    } else {
-      setFireIconGame("Murder Mystery 2");
-    }
+    setFireIconGames(["Beaks", "Grow a Garden"]);
   }, []);
 
   return (
@@ -56,7 +48,7 @@ const SupportedGames = () => {
             className="p-3 rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300 flex justify-between items-center"
           >
             <span>{game}</span>
-            {fireIconGame === game && (
+            {fireIconGames.includes(game) && (
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{ opacity: 1, scale: 1 }}

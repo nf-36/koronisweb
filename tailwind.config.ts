@@ -7,23 +7,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0c1a33", // Keeping the base color but it will appear less intense with more transparency in Background.tsx
+        background: "#0c1a33", // Keep the base color but with reduced intensity
         foreground: "#ffffff",
         primary: {
-          DEFAULT: "#1976D2", // Slightly less bright blue
-          hover: "#1565C0",
-          light: "#90CAF9", // Lighter, less intense blue
-          dark: "#0D47A1"
+          DEFAULT: "#2980B9", // Slightly less intense blue
+          hover: "#2471A3",
+          light: "#AED6F1", // Lighter, less intense blue
+          dark: "#1A5276"
         },
         secondary: {
           DEFAULT: "#0d2042",
           hover: "#16325f"
         },
         accent: {
-          DEFAULT: "#64B5F6", // Less intense accent blue
-          hover: "#42A5F5"
+          DEFAULT: "#85C1E9", // Less intense accent blue
+          hover: "#5DADE2"
         },
-        border: "rgba(33, 150, 243, 0.15)", // More subtle blue border
+        border: "rgba(33, 150, 243, 0.12)", // More subtle blue border
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
