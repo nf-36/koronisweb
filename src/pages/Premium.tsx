@@ -1,17 +1,50 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from "@/hooks/use-toast";
-import { Diamond, ShoppingCart, Server, Gem } from 'lucide-react';
+import { Diamond, ShoppingCart, Server, Gem, X } from 'lucide-react';
 
 const Premium = () => {
   const { toast } = useToast();
+  const [showSpecialOffer, setShowSpecialOffer] = useState(true);
+  const [showFeedbackReminder, setShowFeedbackReminder] = useState(false);
+  
+  useEffect(() => {
+    // Check localStorage for feedback reminder
+    const lastVisit = localStorage.getItem('premium_last_visit');
+    const now = new Date().getTime();
+    
+    if (lastVisit) {
+      const daysSinceLastVisit = (now - parseInt(lastVisit)) / (1000 * 60 * 60 * 24);
+      if (daysSinceLastVisit >= 7) {
+        setShowFeedbackReminder(true);
+      }
+    }
+    
+    // Update last visit timestamp
+    localStorage.setItem('premium_last_visit', now.toString());
+    
+    // Auto-hide special offer after 10 seconds
+    const timer = setTimeout(() => {
+      setShowSpecialOffer(false);
+    }, 10000);
+    
+    return () => clearTimeout(timer);
+  }, []);
 
   const premiumProducts = [
     {
-      name: "Koronis Hub Premium",
+      name: "Koronis Hub Premium (1 Day)",
       description: "Access to all premium features",
-      price: "$19.99",
+      price: "$1.00",
+      icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
+      bgColor: "bg-blue-500/20",
+      link: "https://arcstore.mysellauth.com/product/koronishub"
+    },
+    {
+      name: "Koronis Hub Premium (Lifetime)",
+      description: "Access to all premium features forever",
+      price: "$10.00",
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
       link: "https://arcstore.mysellauth.com/product/koronishub"
@@ -19,7 +52,7 @@ const Premium = () => {
     {
       name: "Ronin External",
       description: "External cheat solution with premium features",
-      price: "$24.99",
+      price: "$8.99",
       icon: <Gem className="w-6 h-6 text-purple-300/90" />,
       bgColor: "bg-purple-500/20",
       link: "https://arcstore.mysellauth.com/product/ronin-external"
@@ -27,7 +60,7 @@ const Premium = () => {
     {
       name: "Lumber Tycoon 2 Private Server",
       description: "Play Lumber Tycoon 2 on a private server with friends",
-      price: "$9.99",
+      price: "$0.99",
       icon: <Server className="w-6 h-6 text-green-300/90" />,
       bgColor: "bg-green-500/20",
       link: "https://arcstore.mysellauth.com/product/lumber-tycoon-2"
@@ -35,7 +68,7 @@ const Premium = () => {
     {
       name: "Fisch Private Server",
       description: "Exclusive private server access for Fisch",
-      price: "$7.99",
+      price: "$0.99",
       icon: <Server className="w-6 h-6 text-amber-300/90" />,
       bgColor: "bg-amber-500/20",
       link: "https://arcstore.mysellauth.com/product/fisch"
@@ -43,7 +76,7 @@ const Premium = () => {
     {
       name: "Lumber Bucks",
       description: "2,500 Lumber Bucks for in-game purchases",
-      price: "$4.99",
+      price: "$0.99",
       icon: <ShoppingCart className="w-6 h-6 text-emerald-300/90" />,
       bgColor: "bg-emerald-500/20",
       link: "https://arcstore.mysellauth.com/product/lumberbucks"
@@ -59,8 +92,81 @@ const Premium = () => {
     window.open(link, '_blank');
   };
 
+  const handleFeedbackClose = () => {
+    setShowFeedbackReminder(false);
+    localStorage.setItem('feedback_dismissed', 'true');
+  };
+
+  const handleSpecialOfferClick = () => {
+    toast({
+      title: "Special Offer Selected!",
+      description: "Taking you to the payment page for 20,000,000 Lumber Bucks...",
+      duration: 3000,
+    });
+    window.open("https://arcstore.mysellauth.com/product/lumberbucks", '_blank');
+  };
+
   return (
     <div className="relative pt-24 px-4 max-w-4xl mx-auto min-h-screen">      
+      <AnimatePresence>
+        {showSpecialOffer && (
+          <motion.div
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            className="fixed top-20 left-0 right-0 mx-auto w-full max-w-md bg-gradient-to-r from-amber-500/80 to-orange-500/80 rounded-lg shadow-2xl p-5 z-50 backdrop-blur-md border border-yellow-400/50"
+          >
+            <button 
+              onClick={() => setShowSpecialOffer(false)}
+              className="absolute top-2 right-2 text-white/80 hover:text-white"
+            >
+              <X size={18} />
+            </button>
+            <h3 className="text-2xl font-bold text-white mb-2">🔥 SPECIAL OFFER! 🔥</h3>
+            <p className="text-white/90 mb-3">20,000,000 Lumber Bucks</p>
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-3xl font-bold text-white">$0.99</span>
+              <span className="text-sm text-white/70 line-through">$4.99</span>
+            </div>
+            <button 
+              onClick={handleSpecialOfferClick}
+              className="w-full py-2 rounded-md bg-white text-orange-500 font-bold hover:bg-yellow-100 transition-colors"
+            >
+              CLAIM NOW
+            </button>
+            <p className="text-xs text-white/70 mt-2 text-center">Limited time offer!</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
+      <AnimatePresence>
+        {showFeedbackReminder && (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 50 }}
+            className="fixed bottom-5 right-5 max-w-sm bg-gradient-to-r from-blue-500/80 to-indigo-500/80 rounded-lg shadow-lg p-4 z-50 backdrop-blur-md border border-blue-400/50"
+          >
+            <button 
+              onClick={handleFeedbackClose}
+              className="absolute top-2 right-2 text-white/80 hover:text-white"
+            >
+              <X size={18} />
+            </button>
+            <h3 className="text-xl font-semibold text-white mb-2">How are you enjoying Koronis?</h3>
+            <p className="text-white/90 mb-4">We'd love to hear your feedback after using our products!</p>
+            <div className="flex justify-between">
+              <button className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white rounded-md">
+                Give Feedback
+              </button>
+              <button className="px-4 py-2 bg-white text-blue-600 rounded-md hover:bg-blue-50">
+                Rate Us
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+      
       <div className="text-center mb-12">
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
