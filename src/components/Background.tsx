@@ -4,9 +4,9 @@ import { cn } from "@/lib/utils";
 
 export default function Background() {
   return (
-    <div className="fixed inset-0 -z-20 min-h-screen w-full overflow-hidden bg-[#0c1a33]/90">
+    <div className="fixed inset-0 -z-20 min-h-screen w-full overflow-hidden bg-[#0c1a33]/85">
       {/* Background gradient - more subtle */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.05] via-transparent to-indigo-400/[0.05] blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/[0.04] via-transparent to-indigo-400/[0.04] blur-3xl" />
 
       {/* Elegant shapes */}
       <div className="absolute inset-0 overflow-hidden">
@@ -15,7 +15,7 @@ export default function Background() {
           width={600}
           height={140}
           rotate={12}
-          gradient="from-blue-500/[0.08]" // Reduced opacity
+          gradient="from-blue-500/[0.06]" // Reduced opacity
           className="left-[-10%] md:left-[-5%] top-[15%] md:top-[20%]"
         />
 
@@ -24,7 +24,7 @@ export default function Background() {
           width={500}
           height={120}
           rotate={-15}
-          gradient="from-indigo-400/[0.08]" // Reduced opacity
+          gradient="from-indigo-400/[0.06]" // Reduced opacity
           className="right-[-5%] md:right-[0%] top-[70%] md:top-[75%]"
         />
 
@@ -33,7 +33,7 @@ export default function Background() {
           width={300}
           height={80}
           rotate={-8}
-          gradient="from-blue-400/[0.08]" // Reduced opacity
+          gradient="from-blue-400/[0.06]" // Reduced opacity
           className="left-[5%] md:left-[10%] bottom-[5%] md:bottom-[10%]"
         />
 
@@ -42,7 +42,7 @@ export default function Background() {
           width={200}
           height={60}
           rotate={20}
-          gradient="from-blue-300/[0.08]" // Reduced opacity
+          gradient="from-blue-300/[0.06]" // Reduced opacity
           className="right-[15%] md:right-[20%] top-[10%] md:top-[15%]"
         />
 
@@ -51,13 +51,13 @@ export default function Background() {
           width={150}
           height={40}
           rotate={-25}
-          gradient="from-indigo-300/[0.08]" // Reduced opacity
+          gradient="from-indigo-300/[0.06]" // Reduced opacity
           className="left-[20%] md:left-[25%] top-[5%] md:top-[10%]"
         />
       </div>
 
       {/* Gradient overlay for top and bottom fade - more transparent */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a33]/80 via-transparent to-[#0c1a33]/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a33]/75 via-transparent to-[#0c1a33]/55 pointer-events-none" />
     </div>
   );
 }
@@ -69,7 +69,7 @@ function ElegantShape({
   width = 400,
   height = 100,
   rotate = 0,
-  gradient = "from-white/[0.05]",  // Default more transparent
+  gradient = "from-white/[0.04]",  // Default more transparent
 }: {
   className?: string;
   delay?: number;
@@ -118,10 +118,10 @@ function ElegantShape({
             "absolute inset-0 rounded-full",
             "bg-gradient-to-r to-transparent",
             gradient,
-            "backdrop-blur-[1px] border border-white/[0.1]", // Thinner border, less blur
-            "shadow-[0_8px_32px_0_rgba(255,255,255,0.07)]", // Reduced shadow intensity
+            "backdrop-blur-[1px] border border-white/[0.08]", // Thinner border, less blur
+            "shadow-[0_8px_32px_0_rgba(255,255,255,0.05)]", // Reduced shadow intensity
             "after:absolute after:inset-0 after:rounded-full",
-            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.15),transparent_70%)]" // Less intense highlight
+            "after:bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.12),transparent_70%)]" // Less intense highlight
           )}
         />
       </motion.div>

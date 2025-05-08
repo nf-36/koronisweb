@@ -32,7 +32,7 @@ const Script = () => {
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.7 }}
-          className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-300"
+          className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200"
         >
           Universal Script
         </motion.h1>
@@ -44,14 +44,14 @@ const Script = () => {
           transition={{ delay: 0.5 }}
         >
           <motion.div 
-            className="p-6 rounded-xl bg-gradient-to-br from-secondary/60 to-secondary/40 backdrop-blur-lg border border-primary/20 transition-all duration-300 hover:border-white/20 group"
-            whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(33, 150, 243, 0.3)" }}
+            className="p-6 rounded-xl bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15 transition-all duration-300 hover:border-white/20 group"
+            whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(33, 150, 243, 0.2)" }}
           >
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-2xl font-bold text-white">Script Hub</h2>
               <motion.button
                 onClick={copyToClipboard}
-                className="px-4 py-2 rounded-md bg-primary/20 hover:bg-primary/30 transition-all duration-300 flex items-center gap-2 text-white"
+                className="px-4 py-2 rounded-md bg-primary/15 hover:bg-primary/25 transition-all duration-300 flex items-center gap-2 text-white"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -70,8 +70,8 @@ const Script = () => {
             </div>
             
             <motion.div 
-              className="bg-black/50 p-4 rounded-md overflow-x-auto max-w-full border border-white/10"
-              whileHover={{ borderColor: "rgba(255,255,255,0.2)" }}
+              className="bg-black/40 p-4 rounded-md overflow-x-auto max-w-full border border-white/10"
+              whileHover={{ borderColor: "rgba(255,255,255,0.15)" }}
             >
               <code className="text-white font-mono text-sm whitespace-pre-wrap break-all">{scriptCode}</code>
             </motion.div>

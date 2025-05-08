@@ -18,7 +18,7 @@ const Navigation = () => {
             <img 
               src="/lovable-uploads/b2b01f92-6e2a-46b9-b356-9656abef7c8c.png" 
               alt="Koronis" 
-              className="h-8 w-8"
+              className="h-8 w-8 rounded-md"
             />
             <span className="text-white font-bold text-xl">Koronis</span>
           </Link>
