@@ -6,53 +6,57 @@ import { Diamond, ShoppingCart, Server, Gem } from 'lucide-react';
 
 const Premium = () => {
   const { toast } = useToast();
-  const arcstoreLink = "https://arcstore.mysellauth.com/";
 
   const premiumProducts = [
     {
       name: "Koronis Hub Premium",
-      description: "Access to all premium features and games forever",
+      description: "Access to all premium features",
       price: "$19.99",
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
-      bgColor: "bg-blue-500/20"
+      bgColor: "bg-blue-500/20",
+      link: "https://arcstore.mysellauth.com/product/koronishub"
     },
     {
       name: "Ronin External",
       description: "External cheat solution with premium features",
       price: "$24.99",
       icon: <Gem className="w-6 h-6 text-purple-300/90" />,
-      bgColor: "bg-purple-500/20"
+      bgColor: "bg-purple-500/20",
+      link: "https://arcstore.mysellauth.com/product/ronin-external"
     },
     {
       name: "Lumber Tycoon 2 Private Server",
       description: "Play Lumber Tycoon 2 on a private server with friends",
       price: "$9.99",
       icon: <Server className="w-6 h-6 text-green-300/90" />,
-      bgColor: "bg-green-500/20"
+      bgColor: "bg-green-500/20",
+      link: "https://arcstore.mysellauth.com/product/lumber-tycoon-2"
     },
     {
       name: "Fisch Private Server",
       description: "Exclusive private server access for Fisch",
       price: "$7.99",
       icon: <Server className="w-6 h-6 text-amber-300/90" />,
-      bgColor: "bg-amber-500/20"
+      bgColor: "bg-amber-500/20",
+      link: "https://arcstore.mysellauth.com/product/fisch"
     },
     {
       name: "Lumber Bucks",
       description: "2,500 Lumber Bucks for in-game purchases",
       price: "$4.99",
       icon: <ShoppingCart className="w-6 h-6 text-emerald-300/90" />,
-      bgColor: "bg-emerald-500/20"
+      bgColor: "bg-emerald-500/20",
+      link: "https://arcstore.mysellauth.com/product/lumberbucks"
     }
   ];
 
-  const handleProductClick = () => {
+  const handleProductClick = (link) => {
     toast({
       title: "Redirecting to Arcstore",
       description: "Taking you to the payment page...",
       duration: 3000,
     });
-    window.open(arcstoreLink, '_blank');
+    window.open(link, '_blank');
   };
 
   return (
@@ -95,7 +99,7 @@ const Premium = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 + (index * 0.1), duration: 0.5 }}
-            onClick={handleProductClick}
+            onClick={() => handleProductClick(product.link)}
             className="p-5 rounded-xl bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15 shadow-lg hover:shadow-blue-900/5 transition-all cursor-pointer group"
           >
             <div className="flex items-center justify-between">
