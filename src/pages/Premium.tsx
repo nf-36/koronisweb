@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from "@/hooks/use-toast";
-import { Diamond, ShoppingCart, Server, Gem, X } from 'lucide-react';
+import { Diamond, Server, Gem, X } from 'lucide-react';
 
 const Premium = () => {
   const { toast } = useToast();
@@ -34,17 +34,12 @@ const Premium = () => {
 
   const premiumProducts = [
     {
-      name: "Koronis Hub Premium (1 Day)",
+      name: "Koronis Hub Premium",
       description: "Access to all premium features",
-      price: "$1.00",
-      icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
-      bgColor: "bg-blue-500/20",
-      link: "https://arcstore.mysellauth.com/product/koronishub"
-    },
-    {
-      name: "Koronis Hub Premium (Lifetime)",
-      description: "Access to all premium features forever",
-      price: "$10.00",
+      options: [
+        { duration: "1 Day", price: "$1.00" },
+        { duration: "Lifetime", price: "$10.00" }
+      ],
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
       link: "https://arcstore.mysellauth.com/product/koronishub"
@@ -72,14 +67,6 @@ const Premium = () => {
       icon: <Server className="w-6 h-6 text-amber-300/90" />,
       bgColor: "bg-amber-500/20",
       link: "https://arcstore.mysellauth.com/product/fisch"
-    },
-    {
-      name: "Lumber Bucks",
-      description: "2,500 Lumber Bucks for in-game purchases",
-      price: "$0.99",
-      icon: <ShoppingCart className="w-6 h-6 text-emerald-300/90" />,
-      bgColor: "bg-emerald-500/20",
-      link: "https://arcstore.mysellauth.com/product/lumberbucks"
     }
   ];
 
@@ -114,7 +101,7 @@ const Premium = () => {
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -50 }}
-            className="fixed top-20 left-0 right-0 mx-auto w-full max-w-md bg-gradient-to-r from-amber-500/80 to-orange-500/80 rounded-lg shadow-2xl p-5 z-50 backdrop-blur-md border border-yellow-400/50"
+            className="mx-auto w-full max-w-3xl bg-gradient-to-r from-amber-500/80 to-orange-500/80 rounded-lg shadow-2xl p-5 mb-8 backdrop-blur-md border border-yellow-400/50"
           >
             <button 
               onClick={() => setShowSpecialOffer(false)}
@@ -132,7 +119,7 @@ const Premium = () => {
               onClick={handleSpecialOfferClick}
               className="w-full py-2 rounded-md bg-white text-orange-500 font-bold hover:bg-yellow-100 transition-colors"
             >
-              CLAIM NOW
+              Buy Now
             </button>
             <p className="text-xs text-white/70 mt-2 text-center">Limited time offer!</p>
           </motion.div>
@@ -205,8 +192,7 @@ const Premium = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 + (index * 0.1), duration: 0.5 }}
-            onClick={() => handleProductClick(product.link)}
-            className="p-5 rounded-xl bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15 shadow-lg hover:shadow-blue-900/5 transition-all cursor-pointer group"
+            className="p-5 rounded-xl bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15 shadow-lg hover:shadow-blue-900/5 transition-all group"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
@@ -218,15 +204,37 @@ const Premium = () => {
                   <p className="text-sm text-gray-400">{product.description}</p>
                 </div>
               </div>
-              <div className="text-right">
-                <span className="font-bold text-xl text-white">{product.price}</span>
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="text-sm text-blue-300 bg-blue-500/20 px-3 py-1 rounded-full mt-1"
-                >
-                  Buy Now
-                </motion.div>
-              </div>
+              
+              {product.options ? (
+                <div className="text-right">
+                  <div className="space-y-2">
+                    {product.options.map((option, idx) => (
+                      <div key={idx} className="flex flex-col items-end">
+                        <span className="text-sm text-gray-300">{option.duration}</span>
+                        <span className="font-bold text-xl text-white">{option.price}</span>
+                        <motion.button
+                          whileHover={{ scale: 1.05 }}
+                          onClick={() => handleProductClick(product.link)}
+                          className="text-sm text-blue-300 bg-blue-500/20 px-3 py-1 rounded-full mt-1"
+                        >
+                          Buy Now
+                        </motion.button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="text-right">
+                  <span className="font-bold text-xl text-white">{product.price}</span>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    onClick={() => handleProductClick(product.link)}
+                    className="text-sm text-blue-300 bg-blue-500/20 px-3 py-1 rounded-full mt-1 block ml-auto"
+                  >
+                    Buy Now
+                  </motion.button>
+                </div>
+              )}
             </div>
           </motion.div>
         ))}
