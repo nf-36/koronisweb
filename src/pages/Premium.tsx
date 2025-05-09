@@ -34,6 +34,7 @@ const Premium = () => {
       isGradient: true,
       borderColor: "border-yellow-400/50",
       textColor: "text-white",
+      descriptionColor: "text-white/90", // Added specific color for description
       buttonBg: "bg-white text-orange-500 hover:bg-yellow-100",
       link: "https://arcstore.mysellauth.com/product/lumberbucks",
       isSpecial: true
@@ -172,7 +173,7 @@ const Premium = () => {
                     {product.isSpecial && <span className="text-yellow-300">🔥 </span>}
                     {product.name}
                   </h3>
-                  <p className="text-sm text-gray-400">{product.description}</p>
+                  <p className={`text-sm ${product.descriptionColor || 'text-gray-400'}`}>{product.description}</p>
                 </div>
               </div>
               
