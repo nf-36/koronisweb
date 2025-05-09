@@ -1,12 +1,14 @@
+// Updated Premium.jsx -> now displays as "Purchase"
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from "@/hooks/use-toast";
-import { Diamond, Server, Gem, X } from 'lucide-react';
+import { Diamond, Server, Gem, X, ChevronDown, ChevronUp } from 'lucide-react';
 
-const Premium = () => {
+const Purchase = () => {
   const { toast } = useToast();
   const [showFeedbackReminder, setShowFeedbackReminder] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
+  const [showKoronisDetails, setShowKoronisDetails] = useState(false);
 
   useEffect(() => {
     const lastVisit = localStorage.getItem('premium_last_visit');
@@ -48,7 +50,8 @@ const Premium = () => {
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
       link: "https://arcstore.mysellauth.com/product/koronishub",
-      category: "script"
+      category: "script",
+      showDetailsToggle: true
     },
     {
       name: "Lumber Tycoon 2 Private Server",
@@ -133,7 +136,7 @@ const Premium = () => {
           transition={{ duration: 0.7 }}
           className="text-4xl md:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200"
         >
-          Premium Content
+          Purchase
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -223,27 +226,41 @@ const Premium = () => {
                 </div>
               )}
             </div>
+
+            {product.name === "Koronis Hub Premium" && (
+              <div className="mt-4">
+                <button
+                  onClick={() => setShowKoronisDetails(!showKoronisDetails)}
+                  className="flex items-center text-sm text-blue-300 hover:underline"
+                >
+                  {showKoronisDetails ? <ChevronUp size={16} className="mr-1" /> : <ChevronDown size={16} className="mr-1" />}
+                  {showKoronisDetails ? "Hide Details" : "More Details"}
+                </button>
+                <AnimatePresence>
+                  {showKoronisDetails && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="overflow-hidden mt-2 text-sm text-gray-300 space-y-1"
+                    >
+                      <ul className="list-disc list-inside">
+                        <li>Includes all supported game scripts</li>
+                        <li>Frequent feature updates and new modules</li>
+                        <li>Priority execution queue</li>
+                        <li>Advanced UI and customization tools</li>
+                        <li>Access to exclusive betas and test builds</li>
+                      </ul>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </motion.div>
         ))}
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.7 }}
-          className="mt-8 p-5 rounded-xl bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15 shadow-lg"
-        >
-          <p className="text-sm text-gray-400 mb-2">Premium benefits:</p>
-          <ul className="list-disc list-inside space-y-1 text-sm text-gray-400">
-            <li>Lifetime access to premium features</li>
-            <li>Higher script execution priority</li>
-            <li>Exclusive games and features</li>
-            <li>Priority customer support</li>
-            <li>Early access to new releases</li>
-          </ul>
-        </motion.div>
       </motion.div>
     </div>
   );
 };
 
-export default Premium;
+export default Purchase;
