@@ -70,7 +70,7 @@ const GetKey = () => {
           transition={{ delay: 0.2, duration: 0.7 }}
           className="text-lg text-gray-300 max-w-2xl mx-auto"
         >
-          Choose one of the methods below to get a script key.
+          Choose one of the methods below to get a script key. Please make sure any content/ad blockers are off to validify the completion.
         </motion.p>
       </div>
 
