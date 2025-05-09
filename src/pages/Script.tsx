@@ -34,7 +34,7 @@ const Script = () => {
           transition={{ delay: 0.3, duration: 0.7 }}
           className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-200"
         >
-          Universal Script
+          Koronis Hub
         </motion.h1>
 
         <motion.div 
@@ -48,7 +48,7 @@ const Script = () => {
             whileHover={{ scale: 1.02, boxShadow: "0 0 15px rgba(33, 150, 243, 0.2)" }}
           >
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-2xl font-bold text-white">Script Hub</h2>
+              <h2 className="text-2xl font-bold text-white">Script Loadstring</h2>
               <motion.button
                 onClick={copyToClipboard}
                 className="px-4 py-2 rounded-md bg-primary/15 hover:bg-primary/25 transition-all duration-300 flex items-center gap-2 text-white"
