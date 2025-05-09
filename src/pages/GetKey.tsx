@@ -31,18 +31,27 @@ const GetKey = () => {
     }
   ];
 
-  const handleLinkClick = (url: string, name: string) => {
-    setIsLoading(true);
-    
-    toast({
-      title: "Redirecting",
-      description: `Opening ${name} key link...`,
-      duration: 2000,
-    });
-    
-    window.open(url, '_blank');
-    setTimeout(() => setIsLoading(false), 1000);
-  };
+    const handleLinkClick = (url: string, name: string) => {
+        const newTab = window.open(url, '_blank');
+
+        if (newTab) {
+            setIsLoading(true);
+            toast({
+                title: "Redirecting",
+                description: `Opening ${name} key link...`,
+                duration: 2000,
+            });
+
+            setTimeout(() => setIsLoading(false), 1000);
+        } else {
+            toast({
+                title: "Popup Blocked",
+                description: "Please allow popups for this site.",
+                duration: 3000,
+                variant: "destructive",
+            });
+        }
+    };
 
   return (
     <div className="relative pt-24 px-4 max-w-4xl mx-auto min-h-screen">      
