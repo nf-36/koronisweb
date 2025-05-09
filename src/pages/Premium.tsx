@@ -2,11 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from "@/hooks/use-toast";
-import { Diamond, Server, Gem, X } from 'lucide-react';
+import { Diamond, Server, Gem, X, CircleDollarSign, Tag } from 'lucide-react';
 
 const Premium = () => {
   const { toast } = useToast();
-  const [showSpecialOffer, setShowSpecialOffer] = useState(true);
   const [showFeedbackReminder, setShowFeedbackReminder] = useState(false);
   
   useEffect(() => {
@@ -23,13 +22,6 @@ const Premium = () => {
     
     // Update last visit timestamp
     localStorage.setItem('premium_last_visit', now.toString());
-    
-    // Auto-hide special offer after 10 seconds
-    const timer = setTimeout(() => {
-      setShowSpecialOffer(false);
-    }, 10000);
-    
-    return () => clearTimeout(timer);
   }, []);
 
   const premiumProducts = [
@@ -43,6 +35,20 @@ const Premium = () => {
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
       link: "https://arcstore.mysellauth.com/product/koronishub"
+    },
+    {
+      name: "Hot Deal",
+      description: "20,000,000 Lumber Bucks",
+      price: "$0.99",
+      originalPrice: "$4.99",
+      icon: <CircleDollarSign className="w-6 h-6 text-yellow-300/90" />,
+      bgColor: "from-amber-500/80 to-orange-500/80",
+      isGradient: true,
+      borderColor: "border-yellow-400/50",
+      textColor: "text-white",
+      buttonBg: "bg-white text-orange-500 hover:bg-yellow-100",
+      link: "https://arcstore.mysellauth.com/product/lumberbucks",
+      isSpecial: true
     },
     {
       name: "Ronin External",
@@ -84,48 +90,8 @@ const Premium = () => {
     localStorage.setItem('feedback_dismissed', 'true');
   };
 
-  const handleSpecialOfferClick = () => {
-    toast({
-      title: "Special Offer Selected!",
-      description: "Taking you to the payment page for 20,000,000 Lumber Bucks...",
-      duration: 3000,
-    });
-    window.open("https://arcstore.mysellauth.com/product/lumberbucks", '_blank');
-  };
-
   return (
     <div className="relative pt-24 px-4 max-w-4xl mx-auto min-h-screen">      
-      <AnimatePresence>
-        {showSpecialOffer && (
-          <motion.div
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -50 }}
-            className="mx-auto w-full max-w-3xl bg-gradient-to-r from-amber-500/80 to-orange-500/80 rounded-lg shadow-2xl p-5 mb-8 backdrop-blur-md border border-yellow-400/50"
-          >
-            <button 
-              onClick={() => setShowSpecialOffer(false)}
-              className="absolute top-2 right-2 text-white/80 hover:text-white"
-            >
-              <X size={18} />
-            </button>
-            <h3 className="text-2xl font-bold text-white mb-2">🔥 SPECIAL OFFER! 🔥</h3>
-            <p className="text-white/90 mb-3">20,000,000 Lumber Bucks</p>
-            <div className="flex items-center justify-between mb-3">
-              <span className="text-3xl font-bold text-white">$0.99</span>
-              <span className="text-sm text-white/70 line-through">$4.99</span>
-            </div>
-            <button 
-              onClick={handleSpecialOfferClick}
-              className="w-full py-2 rounded-md bg-white text-orange-500 font-bold hover:bg-yellow-100 transition-colors"
-            >
-              Buy Now
-            </button>
-            <p className="text-xs text-white/70 mt-2 text-center">Limited time offer!</p>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
       <AnimatePresence>
         {showFeedbackReminder && (
           <motion.div
@@ -192,22 +158,28 @@ const Premium = () => {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5 + (index * 0.1), duration: 0.5 }}
-            className="p-5 rounded-xl bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15 shadow-lg hover:shadow-blue-900/5 transition-all group"
+            className={`p-5 rounded-xl ${product.isGradient 
+              ? `bg-gradient-to-r ${product.bgColor} backdrop-blur-md border ${product.borderColor || 'border-primary/15'}`
+              : `bg-gradient-to-br from-secondary/50 to-secondary/30 backdrop-blur-lg border border-primary/15`
+            } shadow-lg hover:shadow-blue-900/5 transition-all group`}
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className={`p-3 rounded-lg ${product.bgColor}`}>
+                <div className={`p-3 rounded-lg ${product.isGradient ? product.bgColor : product.bgColor}`}>
                   {product.icon}
                 </div>
                 <div>
-                  <h3 className="font-medium text-lg text-white group-hover:text-blue-200/90 transition-colors">{product.name}</h3>
+                  <h3 className={`font-medium text-lg ${product.textColor || 'text-white group-hover:text-blue-200/90'} transition-colors`}>
+                    {product.isSpecial && <span className="text-yellow-300">🔥 </span>}
+                    {product.name}
+                  </h3>
                   <p className="text-sm text-gray-400">{product.description}</p>
                 </div>
               </div>
               
               {product.options ? (
                 <div className="text-right">
-                  <div className="space-y-2">
+                  <div className="flex space-x-4 items-center justify-end">
                     {product.options.map((option, idx) => (
                       <div key={idx} className="flex flex-col items-end">
                         <span className="text-sm text-gray-300">{option.duration}</span>
@@ -225,14 +197,19 @@ const Premium = () => {
                 </div>
               ) : (
                 <div className="text-right">
-                  <span className="font-bold text-xl text-white">{product.price}</span>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    onClick={() => handleProductClick(product.link)}
-                    className="text-sm text-blue-300 bg-blue-500/20 px-3 py-1 rounded-full mt-1 block ml-auto"
-                  >
-                    Buy Now
-                  </motion.button>
+                  <div className="flex flex-col items-end">
+                    <span className="font-bold text-xl text-white">{product.price}</span>
+                    {product.originalPrice && (
+                      <span className="text-sm text-white/70 line-through">{product.originalPrice}</span>
+                    )}
+                    <motion.button
+                      whileHover={{ scale: 1.05 }}
+                      onClick={() => handleProductClick(product.link)}
+                      className={`text-sm px-3 py-1 rounded-full mt-1 block ml-auto ${product.buttonBg || 'text-blue-300 bg-blue-500/20'}`}
+                    >
+                      Buy Now
+                    </motion.button>
+                  </div>
                 </div>
               )}
             </div>
