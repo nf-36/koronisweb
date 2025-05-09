@@ -11,7 +11,7 @@ import Script from "./pages/Script";
 import GetKey from "./pages/GetKey";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
-import Premium from "./pages/Premium";
+import Purchase from "./pages/Purchase";
 
 const queryClient = new QueryClient();
 
@@ -29,7 +29,7 @@ const App = () => (
             <Route path="/script" element={<Script />} />
             <Route path="/get-key" element={<GetKey />} />
             <Route path="/about" element={<About />} />
-            <Route path="/premium" element={<Premium />} />
+            <Route path="/purchase" element={<Purchase />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Router>
