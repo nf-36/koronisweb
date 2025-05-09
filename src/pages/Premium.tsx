@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from "@/hooks/use-toast";
-import { Diamond, Server, Gem, X, CircleDollarSign, Tag } from 'lucide-react';
+import { Diamond, Server, Gem, X, CircleDollarSign, Rocket } from 'lucide-react';
 
 const Premium = () => {
   const { toast } = useToast();
@@ -26,6 +26,19 @@ const Premium = () => {
 
   const premiumProducts = [
     {
+      name: "Hot Deal",
+      description: "20,000,000 Lumber Bucks",
+      price: "$0.99",
+      icon: <Rocket className="w-8 h-8 text-yellow-300" />,
+      bgColor: "from-amber-500/80 to-orange-500/80",
+      isGradient: true,
+      borderColor: "border-yellow-400/50",
+      textColor: "text-white",
+      buttonBg: "bg-white text-orange-500 hover:bg-yellow-100",
+      link: "https://arcstore.mysellauth.com/product/lumberbucks",
+      isSpecial: true
+    },
+    {
       name: "Koronis Hub Premium",
       description: "Access to all premium features",
       options: [
@@ -35,20 +48,6 @@ const Premium = () => {
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
       link: "https://arcstore.mysellauth.com/product/koronishub"
-    },
-    {
-      name: "Hot Deal",
-      description: "20,000,000 Lumber Bucks",
-      price: "$0.99",
-      originalPrice: "$4.99",
-      icon: <CircleDollarSign className="w-6 h-6 text-yellow-300/90" />,
-      bgColor: "from-amber-500/80 to-orange-500/80",
-      isGradient: true,
-      borderColor: "border-yellow-400/50",
-      textColor: "text-white",
-      buttonBg: "bg-white text-orange-500 hover:bg-yellow-100",
-      link: "https://arcstore.mysellauth.com/product/lumberbucks",
-      isSpecial: true
     },
     {
       name: "Ronin External",
@@ -199,9 +198,6 @@ const Premium = () => {
                 <div className="text-right">
                   <div className="flex flex-col items-end">
                     <span className="font-bold text-xl text-white">{product.price}</span>
-                    {product.originalPrice && (
-                      <span className="text-sm text-white/70 line-through">{product.originalPrice}</span>
-                    )}
                     <motion.button
                       whileHover={{ scale: 1.05 }}
                       onClick={() => handleProductClick(product.link)}
