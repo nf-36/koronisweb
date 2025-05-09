@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 
 // Updated games list
 const games = [
-  "Beaks",
-  "Collect all Pets",
   "Grow a Garden",
-  "Murder Mystery 2",
+  "Beaks",
   "Grow a Tree",
   "Jailbreak",
+  "Murder Mystery 2",
+  "Collect all Pets",
   "Zombies RNG"
 ];
 
@@ -66,7 +66,7 @@ const SupportedGames = () => {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.5 }}
       >
-        Use The Universal Script to load these games
+        Games not listed on this page may work with our Universal.
       </motion.p>
     </motion.div>
   );
