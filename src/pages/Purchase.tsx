@@ -1,8 +1,13 @@
-// Updated Premium.jsx -> now displays as "Purchase"
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from "@/hooks/use-toast";
 import { Diamond, Server, Gem, X, ChevronDown, ChevronUp } from 'lucide-react';
+
+const RobuxIcon = ({ className }) => (
+  <svg className={className} fill="white" viewBox="0 0 100 100">
+    <path d="M50 0L0 25v50l50 25 50-25V25L50 0zm25 57.5l-25 12.5-25-12.5V42.5l25-12.5 25 12.5v15z" />
+  </svg>
+);
 
 const Purchase = () => {
   const { toast } = useToast();
@@ -45,7 +50,13 @@ const Purchase = () => {
       description: "Access to all premium features",
       options: [
         { duration: "1 Day", price: "$1.00" },
-        { duration: "Lifetime", price: "$10.00" }
+        { duration: "Lifetime", price: "$10.00" },
+        {
+          duration: "Lifetime",
+          price: "1000 Robux",
+          robux: true,
+          link: "https://discord.gg/koronis"
+        }
       ],
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
@@ -199,10 +210,13 @@ const Purchase = () => {
                     {product.options.map((option, idx) => (
                       <div key={idx} className="flex flex-col items-end">
                         <span className="text-sm text-gray-300">{option.duration}</span>
-                        <span className="font-bold text-xl text-white">{option.price}</span>
+                        <span className="font-bold text-xl text-white flex items-center gap-1">
+                          {option.robux && <RobuxIcon className="w-5 h-5" />}
+                          {option.price}
+                        </span>
                         <motion.button
                           whileHover={{ scale: 1.05 }}
-                          onClick={() => handleProductClick(product.link)}
+                          onClick={() => handleProductClick(option.link || product.link)}
                           className="text-sm text-blue-300 bg-blue-500/20 px-3 py-1 rounded-full mt-1"
                         >
                           Buy Now
