@@ -51,12 +51,7 @@ const Purchase = () => {
       options: [
         { duration: "1 Day", price: "$1.00" },
         { duration: "Lifetime", price: "$10.00" },
-        {
-          duration: "Lifetime",
-          price: "1000 Robux",
-          robux: true,
-          link: "https://discord.gg/koronis"
-        }
+        { duration: "Lifetime", price: "1000", robux: true, link: "https://www.roblox.com/games/124911259015167/KHub" }
       ],
       icon: <Diamond className="w-6 h-6 text-blue-300/90" />,
       bgColor: "bg-blue-500/20",
