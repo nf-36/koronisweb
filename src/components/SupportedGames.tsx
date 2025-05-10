@@ -121,37 +121,48 @@ const SupportedGames = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.08 }}
-              className="rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300"
+              className="rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300 p-3"
             >
-              <button
-                onClick={() => toggle(index)}
-                className="w-full p-3 flex justify-between items-center text-white text-left hover:bg-white/5 transition"
-              >
-                <span className="flex items-center gap-2">
+              <div className="flex justify-between items-center">
+                <span className="flex items-center gap-2 text-white">
                   {game.name}
                   {fireGames.includes(game.name) && (
                     <Flame className="w-4 h-4 text-orange-500" />
                   )}
                 </span>
-                {isOpen ? (
-                  <ChevronUp className="w-4 h-4 text-sky-300" />
-                ) : (
-                  <ChevronDown className="w-4 h-4 text-sky-300" />
-                )}
-              </button>
+                <button
+                  onClick={() => toggle(index)}
+                  className="flex items-center text-sm text-blue-300 hover:underline"
+                >
+                  {isOpen ? (
+                    <ChevronUp size={16} className="mr-1" />
+                  ) : (
+                    <ChevronDown size={16} className="mr-1" />
+                  )}
+                  {isOpen ? "Hide Features" : "More Info"}
+                </button>
+              </div>
 
-              {isOpen && (
-                <div className="px-4 pb-4">
-                  <ul className="list-disc list-inside text-sm text-white/80">
-                    {game.features.map((feature, i) => (
-                      <li key={i}>{feature}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
+              <AnimatePresence>
+                {isOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden mt-2 text-sm text-gray-300 space-y-1"
+                  >
+                    <ul className="list-disc list-inside">
+                      {game.features.map((feature, i) => (
+                        <li key={i}>{feature}</li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           );
         })}
+
       </div>
 
       <motion.p 
