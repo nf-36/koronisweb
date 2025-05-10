@@ -1,26 +1,101 @@
-
 import { motion } from "framer-motion";
-import { Gamepad, Flame } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Gamepad, Flame, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
-// Updated games list
 const games = [
-  "Grow a Garden",
-  "Beaks",
-  "Grow a Tree",
-  "Jailbreak",
-  "Murder Mystery 2",
-  "Collect all Pets",
-  "Zombies RNG"
+  {
+    name: "Grow a Garden",
+    features: [
+      "Auto Plant", 
+      "Auto Sell", 
+      "Auto Harvest",
+      "Harvest Aura",
+      "Fly Hack",
+      "Auto Eggs",
+      "Auto Seeds",
+      "Anti AFK",
+      "More"
+    ],
+  },
+  {
+    name: "Beaks",
+    features: [
+      "Auto Catch", 
+      "Auto Sell", 
+      "Auto Darts",
+      "Auto Wishing Well",
+      "Spoof Region",
+      "Teleports"
+    ],
+  },
+  {
+    name: "Grow a Tree",
+    features: [
+      "Auto Chop", 
+      "Auto Pickup",
+      "Auto Seeds",
+      "Auto Plant",
+      "Auto Sell"
+    ],
+  },
+  {
+    name: "Jailbreak",
+    features: [
+      "Speed", 
+      "Gravity", 
+      "No Ragdoll",
+      "No Fall Damage",
+      "No Parachute",
+      "Noclip",
+      "Give Gun",
+      "Silent Aim"
+    ],
+  },
+  {
+    name: "Murder Mystery 2",
+    features: [
+      "Auto Collect Coins", 
+      "Auto Kill Murderer", 
+      "Walkspeed",
+      "Jump Power",
+      "Lock Position"
+    ],
+  },
+  {
+    name: "Collect all Pets",
+    features: [
+      "Auto Collect Drops", 
+      "Auto Egg", 
+      "Instant Mythical",
+      "Auto Upgrades",
+      "Auto Quests",
+      "Auto Rebirth",
+      "Auto Rejoin",
+      "Anti AFK",
+      "Webhooks",
+    ],
+  },
+  {
+    name: "Zombies RNG",
+    features: [
+      "Godmode (Semi)", 
+      "Auto Kill", 
+      "Fly Hack",
+      "Auto Roll",
+      "Auto Buy Potions",
+      "Auto Use Potions"
+    ],
+  },
 ];
 
+const fireGames = ["Beaks", "Grow a Garden"];
+
 const SupportedGames = () => {
-  const [fireIconGames, setFireIconGames] = useState<string[]>([]);
-  
-  // Set fire icons for Beaks and Grow A Garden
-  useEffect(() => {
-    setFireIconGames(["Beaks", "Grow a Garden"]);
-  }, []);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggle = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <motion.div 
@@ -38,28 +113,47 @@ const SupportedGames = () => {
       </div>
       
       <div className="grid gap-3">
-        {games.map((game, index) => (
-          <motion.div
-            key={game}
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: index * 0.1 }}
-            whileHover={{ scale: 1.02, backgroundColor: "rgba(186, 230, 253, 0.1)" }}
-            className="p-3 rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300 flex justify-between items-center"
-          >
-            <span>{game}</span>
-            {fireIconGames.includes(game) && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring" }}
+        {games.map((game, index) => {
+          const isOpen = openIndex === index;
+          return (
+            <motion.div
+              key={game.name}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.08 }}
+              className="rounded bg-transparent backdrop-blur-sm border border-sky-300/10 transition-all duration-300"
+            >
+              <button
+                onClick={() => toggle(index)}
+                className="w-full p-3 flex justify-between items-center text-white text-left hover:bg-white/5 transition"
               >
-                <Flame className="w-5 h-5 text-orange-500" />
-              </motion.div>
-            )}
-          </motion.div>
-        ))}
+                <span className="flex items-center gap-2">
+                  {game.name}
+                  {fireGames.includes(game.name) && (
+                    <Flame className="w-4 h-4 text-orange-500" />
+                  )}
+                </span>
+                {isOpen ? (
+                  <ChevronUp className="w-4 h-4 text-sky-300" />
+                ) : (
+                  <ChevronDown className="w-4 h-4 text-sky-300" />
+                )}
+              </button>
+
+              {isOpen && (
+                <div className="px-4 pb-4">
+                  <ul className="list-disc list-inside text-sm text-white/80">
+                    {game.features.map((feature, i) => (
+                      <li key={i}>{feature}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
+
       <motion.p 
         className="mt-4 text-sm text-gray-400"
         initial={{ opacity: 0 }}
