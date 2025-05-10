@@ -255,9 +255,10 @@ const Purchase = () => {
                     >
                       <ul className="list-disc list-inside">
                         <li>Includes all supported game scripts</li>
-                        <li>Frequent feature updates and new modules</li>
-                        <li>Priority execution queue</li>
-                        <li>Advanced UI and customization tools</li>
+                        <li>Access to discontinued scripts</li>
+                        <li>Priority Support</li>
+                        <li>Premium Only Features</li>
+                        <li>Frequent feature updates</li>
                         <li>Access to exclusive betas and test builds</li>
                       </ul>
                     </motion.div>
